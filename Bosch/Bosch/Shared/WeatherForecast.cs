@@ -1,3 +1,7 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
 namespace Bosch.Shared
 {
     public class WeatherForecast
@@ -6,7 +10,7 @@ namespace Bosch.Shared
 
         public int TemperatureC { get; set; }
 
-        public string? Summary { get; set; }
+        public string Summary { get; set; }
 
         public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
     }

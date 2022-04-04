@@ -13,5 +13,5 @@
     <ProjectReference Include="..\Shared\Bosch.Shared.csproj" />
   </ItemGroup>
 
-
+//test 
 </Project>

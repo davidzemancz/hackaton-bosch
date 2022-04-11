@@ -36,5 +36,12 @@ namespace Bosch.Server.Controllers
             })
             .ToArray();
         }
+
+        [HttpGet]
+        [Route("/api/dita")]
+        public Dita GetDita()
+        {
+            return new Dita() { Jmeno = "Dita" };
+        }
     }
 }

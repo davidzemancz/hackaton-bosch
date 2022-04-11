@@ -1,0 +1,23 @@
+﻿@page "/dita"
+@using Bosch.Shared
+@inject HttpClient Http
+
+<h3>DitaPage</h3>
+
+@if(dita == null)
+{
+    <p>Dita tu jeste neni</p>
+}
+else
+{
+    <p>Je tu @dita.Jmeno</p>
+}
+
+@code {
+    private Dita dita;
+
+    protected override async Task OnInitializedAsync()
+    {
+        dita = await Http.GetFromJsonAsync<Dita>("/api/dita");
+    }
+}

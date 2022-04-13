@@ -45,28 +45,29 @@ else
 }
 
 @code {
-	private List<Trasa> Trasy;
+    private List<Trasa> Trasy;
 
-	protected override async Task OnInitializedAsync()
-	{
-		Trasy = await Http.GetFromJsonAsync<List<Trasa>>("/api/trasa/list");
-	}
+    protected override async Task OnInitializedAsync()
+    {
+        Trasy = await Http.GetFromJsonAsync<List<Trasa>>("/api/trasa/list");
+    }
 
 
-	private void Delete(int id)
-	{
+    private async void Delete(int id)
+    {
+        var result = await Http.PostAsJsonAsync<int>($"/api/trasa/remove/{id}", id);
+        Navigation.NavigateTo("/trasy");
+    }
 
-	}
+    protected void Edit(int id)
+    {
+        Navigation.NavigateTo("trasy/edit/" + id);
+    }
 
-	protected void Edit(int id)
-	{
-		Navigation.NavigateTo("trasy/edit/" + id);
-	}
+    protected void Add()
+    {
+        Navigation.NavigateTo("trasy/edit/" + -1);
 
-	protected void Add()
-	{
-		Navigation.NavigateTo("trasy/edit/" + -1);
-
-	}
+    }
 }
 

@@ -9,7 +9,7 @@ namespace Bosch.Shared
     public class Objednavka
     {
         public int Id { get; set; }
-        public Mezisklad Mezisklad { get; set; }
-        public Material Material { get; set; }
+        public Mezisklad Mezisklad { get; set; }  = new Mezisklad();
+        public Material Material { get; set; } = new Material();
     }
 }

@@ -1,0 +1,66 @@
+﻿@page "/trasy"
+@using Bosch.Shared
+@inject HttpClient Http
+
+<h3>Trasy</h3>
+
+@if (Trasy == null)
+{
+<p><em>Loading...</em></p>
+}
+else
+{
+<table class="table">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Zastávky</th>
+			<th>Editace</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var Trasa in Trasy)
+		{
+		<tr>
+			<td>@Trasa.Id</td>
+			<td>@Helpers.ListToString(Trasa.Zastavky)</td>
+			<td>
+				<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Edit(Trasa.Id))">
+					<span class="oi oi-pencil" aria-hidden="true"></span></button>
+				<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Delete(Trasa.Id))">
+					<span class="oi oi-trash" aria-hidden="true"></span></button>
+			</td>
+		</tr>
+		}
+	</tbody>
+</table>
+<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Add())">
+	<span class="oi oi-plus" aria-hidden="true"></span>
+</button>
+}
+
+@code {
+	private List<Trasa> Trasy;
+
+	protected override async Task OnInitializedAsync()
+	{
+		Trasy = await Http.GetFromJsonAsync<List<Trasa>>("/api/trasa/list");
+	}
+
+
+	private void Delete(int id)
+	{
+
+	}
+
+	protected void Edit(int id)
+	{
+
+	}
+
+	protected void Add()
+	{
+
+	}
+}
+

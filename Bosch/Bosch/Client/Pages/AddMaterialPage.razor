@@ -3,12 +3,12 @@
 @inject HttpClient Http
 @inject NavigationManager NavManager
 
-<h3>Nový material</h3>
+<h3>Nový materiál</h3>
 <EditForm Model="@material" OnValidSubmit="@HandleValidSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <InputText id="name" @bind-Value="material.Nazev" />
-    <button type="submit">Submit</button>
+	<DataAnnotationsValidator />
+	<ValidationSummary />
+	<InputText id="name" @bind-Value="material.Nazev" />
+	<button type="submit" class="btn btn-outline-primary btn-sm">Přidat</button>
 </EditForm>
 
 @code {

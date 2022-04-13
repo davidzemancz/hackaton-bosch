@@ -6,12 +6,12 @@
 @if (material != null)
 {
 
-<h3>Správa Materialu</h3>
+<h3>Správa materiálu</h3>
     <EditForm Model="@material" OnValidSubmit="@HandleValidSubmit">
         <DataAnnotationsValidator />
         <ValidationSummary />
         <InputText id="name" @bind-Value="material.Nazev" />
-        <button type="submit">Submit</button>
+        <button type="submit" class="btn btn-outline-primary btn-sm">Uložit</button>
     </EditForm>
 }
 

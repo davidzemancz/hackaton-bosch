@@ -5,10 +5,10 @@
 
 <h3>Nový vláček</h3>
 <EditForm Model="@vlacek" OnValidSubmit="@HandleValidSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <InputText id="name" @bind-Value="vlacek.Jmeno" />
-    <button type="submit">Submit</button>
+	<DataAnnotationsValidator />
+	<ValidationSummary />
+	<InputText id="name" @bind-Value="vlacek.Jmeno" />
+	<button type="submit" class="btn btn-outline-primary btn-sm">Přidat</button>
 </EditForm>
 
 @code {

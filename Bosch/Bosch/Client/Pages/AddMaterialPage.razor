@@ -16,7 +16,7 @@
 
     private async void HandleValidSubmit()
     {
-        var result = await Http.PostAsJsonAsync<Material>($"api/material/add", material);
+        var result = await Http.PostAsJsonAsync<Material>($"/api/material/add", material);
         NavManager.NavigateTo("/material/list");
     }
 }

@@ -1,0 +1,34 @@
+﻿@page "/mezisklad/edit/{id:int}"
+@using Bosch.Shared
+@inject HttpClient Http
+@inject NavigationManager NavManager
+
+
+@if (mezisklad != null)
+{
+
+    <h3>Správa Meziskladů</h3>
+    <EditForm Model="@mezisklad" OnValidSubmit="@HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <InputText id="name" @bind-Value="mezisklad.Jmeno" />
+        <button type="submit">Submit</button>
+    </EditForm>
+}
+
+
+@code { [Parameter]
+    public int Id { get; set; }
+
+    private Mezisklad mezisklad { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        mezisklad = await Http.GetFromJsonAsync<Mezisklad>($"/api/mezisklad/edit/{Id}");
+    }
+
+    private async void HandleValidSubmit()
+    {
+        var result = await Http.PostAsJsonAsync<Mezisklad>($"api/mezisklad/save", mezisklad);
+        NavManager.NavigateTo("/mezisklad/list");
+    } }

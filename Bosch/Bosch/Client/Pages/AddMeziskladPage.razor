@@ -1,0 +1,22 @@
+﻿@page "/mezisklad/add"
+@using Bosch.Shared
+@inject HttpClient Http
+@inject NavigationManager NavManager
+
+<h3>Nový mezisklad</h3>
+<EditForm Model="@mezisklad" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <InputText id="name" @bind-Value="mezisklad.Jmeno" />
+    <button type="submit">Submit</button>
+</EditForm>
+
+@code {
+    Mezisklad mezisklad = new Mezisklad();
+
+    private async void HandleValidSubmit()
+    {
+        var result = await Http.PostAsJsonAsync<Mezisklad>($"api/mezisklad/add", mezisklad);
+        NavManager.NavigateTo("/mezisklad/list");
+    }
+}

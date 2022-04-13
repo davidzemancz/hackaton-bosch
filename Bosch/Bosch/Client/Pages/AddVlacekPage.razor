@@ -1,0 +1,22 @@
+﻿@page "/vlacek/add"
+@using Bosch.Shared
+@inject HttpClient Http
+@inject NavigationManager NavManager
+
+<h3>Nový vláček</h3>
+<EditForm Model="@vlacek" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <InputText id="name" @bind-Value="vlacek.Jmeno" />
+    <button type="submit">Submit</button>
+</EditForm>
+
+@code {
+    Vlacek vlacek = new Vlacek();
+
+    private async void HandleValidSubmit()
+    {
+        var result = await Http.PostAsJsonAsync<Vlacek>($"api/vlacek/add", vlacek);
+        NavManager.NavigateTo("/vlacek/list");
+    }
+}

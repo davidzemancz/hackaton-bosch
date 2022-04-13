@@ -5,21 +5,32 @@
 
 <h3>Nová objednávka</h3>
 
-@if (Objednavka != null && Materialy != null)
+@if (Objednavka != null && Materialy != null && Mezisklady != null)
 {
     <EditForm Model="@Objednavka" OnValidSubmit="@HandleValidSubmit">
         <DataAnnotationsValidator />
         <ValidationSummary />
-            <div class="mb-3">
-            <select class="form-select" aria-label="Materiál" @bind="Objednavka.Mezisklad.Id">
-                @foreach (var material in Materialy)
-                {
-                    <option value="@material.Id">@material.Nazev</option>
-                }
-            </select>
-         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group">
+                <label for="mezisklad">Stanoviště</label>
+                <select id="mezisklad" @bind="Objednavka.Mezisklad.Id" class="form-control">
+                    @foreach (var mezisklad in Mezisklady)
+                    {
+                        <option value="@mezisklad.Id">@mezisklad.Jmeno</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="material">Materiál</label>
+                <select id="material" @bind="Objednavka.Material.Id" class="form-control">
+                    @foreach (var material in Materialy)
+                    {
+                        <option value="@material.Id">@material.Nazev</option>
+                    }
+                </select>
+            </div>
+        <button type="submit" class="btn btn-primary">Vytvořit objednávku</button>
     </EditForm>
+
 }
 
 @code {
@@ -27,9 +38,12 @@
 
     private Material[] Materialy;
 
+    private Mezisklad[] Mezisklady;
+
      protected override async Task OnInitializedAsync()
     {
         Materialy = await Http.GetFromJsonAsync<Material[]>("/api/material/list");
+        Mezisklady = await Http.GetFromJsonAsync<Mezisklad[]>("/api/mezisklad/list");
     }
 
     private async void HandleValidSubmit()

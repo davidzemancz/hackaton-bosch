@@ -1,17 +1,19 @@
 ﻿@page "/vlacek/edit/{id:int}"
 @using Bosch.Shared
 @inject HttpClient Http
+@inject NavigationManager NavManager
+
 
 @if (vlacek != null)
 {
 
-<h3>Správa vláčku</h3>
-<EditForm Model="@vlacek" OnValidSubmit="@HandleValidSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <InputText id="name" @bind-Value="vlacek.Jmeno" />
-    <button type="submit">Submit</button>
-</EditForm>
+    <h3>Správa vláčku</h3>
+    <EditForm Model="@vlacek" OnValidSubmit="@HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <InputText id="name" @bind-Value="vlacek.Jmeno" />
+        <button type="submit">Submit</button>
+    </EditForm>
 }
 
 
@@ -27,7 +29,7 @@
 
     private async void HandleValidSubmit()
     {
-        //await AgentService.Save(Agent);
-        //Navigation.NavigateTo("agent/list");
         var result = await Http.PostAsJsonAsync<Vlacek>($"api/vlacek/save", vlacek);
+        NavManager.NavigateTo("/vlacek/list");
     } }
+

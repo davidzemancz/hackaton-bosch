@@ -24,7 +24,24 @@ namespace Bosch.Server.Controllers
         [Route("/api/trasa/edit/{id:int}")]
         public Trasa Edit(int id)
         {
+            if (id == -1) return new Trasa();
             return Database.Trasy.First(t => t.Id == id);
+
+
         }
-    }
+        [HttpPost]
+        [Route("/api/trasa/save")]
+        public void Save(Trasa trasa)
+        {
+            if (trasa.Id == -1)
+            {
+                trasa.Id = Database.Trasy.Max(o => o.Id) + 1;
+                Database.Trasy.Add(trasa);
+            }
+            else
+            {
+                Database.Trasy[Database.Trasy.FindIndex(t => t.Id == trasa.Id)] = trasa;
+            }
+        }
+        }
 }

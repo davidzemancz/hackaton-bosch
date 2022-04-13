@@ -1,5 +1,6 @@
 ﻿@page "/vlacek/list"
 @using Bosch.Shared
+@using System.Threading;
 @inject HttpClient Http
 @inject NavigationManager NavManager
 
@@ -57,7 +58,8 @@ else
 
     private async void Delete(int id)
     {
-        //var result = await Http.PostAsJsonAsync<Vlacek>($"api/vlacek/remove", id);
+        var result = await Http.PostAsJsonAsync<int>($"/api/vlacek/remove/{id}", id);
+        NavManager.NavigateTo("/vlacek/list");
     }
 
     private void EditVlacku(int id)
@@ -65,9 +67,12 @@ else
 
         NavManager.NavigateTo("/vlacek/edit/" + id);
     }
+
+    private int Count { get; set; } = 10;
+
+ 
+
     protected void Add()
     {
         NavManager.NavigateTo("/vlacek/add");
-
-    }
-}
+    } }

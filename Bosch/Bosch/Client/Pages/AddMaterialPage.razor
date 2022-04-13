@@ -19,6 +19,4 @@
         var result = await Http.PostAsJsonAsync<Material>($"api/material/add", material);
         NavManager.NavigateTo("/material/list");
     }
-
-
 }

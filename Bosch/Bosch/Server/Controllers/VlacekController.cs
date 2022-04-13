@@ -16,12 +16,16 @@ namespace Bosch.Server.Controllers
         public static Vlacek[] Seznam = new Vlacek[]
             {
 
-
                 new Vlacek() { Id = 0, Kapacita = 20, Naklad = Materialy },
                 new Vlacek() { Id = 1,  Kapacita = 50, Naklad = Materialy },
                 new Vlacek() { Id = 2,  Kapacita = 100, Naklad = Materialy },
                 // TODO v inicializaci vláčku číslo trasy na které jezdí
             };
+
+        public static Vlacek Find(int Id)
+        {
+            return Seznam[Id];
+        }
 
         [HttpGet]
         [Route("/api/vlacek/list")]

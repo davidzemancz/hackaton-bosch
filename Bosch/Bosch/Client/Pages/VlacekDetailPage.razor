@@ -4,14 +4,6 @@
 
 <h3>Správa vláčku</h3>
 
-@if (Vlacek != null)
-{
-<EditForm Model="@Vlacek" OnValidSubmit="@HandleValidSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <InputText id="Id" @bind-Value="Vlacek.Id.ToString()" />
-    <button type="submit">Submit</button>
-</EditForm>}
 
 @code { [Parameter]
     public int Id { get; set; }
@@ -23,8 +15,8 @@
         Vlacek = await Http.GetFromJsonAsync<Vlacek>($"api/vlacek/edit/{Id}");
     }
 
-    private async void HandleValidSubmit()
+    private void HandleValidSubmit()
     {
-        await AgentService.Save(Agent);
-        Navigation.NavigateTo("agent/list");
+        int a = 6;        //await AgentService.Save(Agent);
+        //Navigation.NavigateTo("agent/list");
     } }

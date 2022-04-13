@@ -27,7 +27,7 @@ else
                         <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Edit(mezisklad.Id))">
                             <span class="oi oi-pencil" aria-hidden="true"></span>
                         </button>
-                        <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Edit(mezisklad.Id))">
+                        <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Delete(mezisklad.Id))">
                             <span class="oi oi-trash" aria-hidden="true"></span>
                         </button>
                     </td>
@@ -46,6 +46,12 @@ else
     protected override async Task OnInitializedAsync()
     {
         mezisklady = await Http.GetFromJsonAsync<Mezisklad[]>("/api/mezisklad/list");
+    }
+
+    private async void Delete(int id)
+    {
+        var result = await Http.PostAsJsonAsync<int>($"/api/mezisklad/remove/{id}", id);
+        NavManager.NavigateTo("/mezisklad/list");
     }
 
     private void Edit(int id)

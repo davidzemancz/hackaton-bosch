@@ -14,6 +14,15 @@ namespace Bosch.Shared
         public int Kapacita { get; set; }
         public List<Material> Naklad { get; set; } = new List<Material>();
         //TODO: zastavky, jizdni rad
-
+        public string getNaklad()
+        {
+            if (Naklad.Count > 0)
+            {
+                return Naklad[0].Nazev;
+            }
+            else return "prázdný";
+        }
     }
+
+    
 }

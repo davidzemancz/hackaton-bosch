@@ -40,5 +40,12 @@ namespace Bosch.Server.Controllers
             Database.EditMezisklad(mezisklad);
         }
 
+        [HttpPost]
+        [Route("/api/mezisklad/remove/{id:int}")]
+        public void Remove(int id)
+        {
+            Database.RemoveMezisklad(id);
+        }
+
     }
 }

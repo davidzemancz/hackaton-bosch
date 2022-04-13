@@ -50,19 +50,20 @@ else
         jizdnyRady = await Http.GetFromJsonAsync<List<JizdniRad>>("/api/jizdnirad/list");
     }
 
-    private void Delete(int id)
-	{
+    private async void Delete(int id)
+    {
+        var result = await Http.PostAsJsonAsync<int>($"/api/jizdnirad/remove/{id}", id);
+        Navigation.NavigateTo("/jizdnirady");
+    }
 
-	}
+    protected void Edit(int id)
+    {
+        Navigation.NavigateTo("jizdnirady/edit/" + id);
+    }
 
-	protected void Edit(int id)
-	{
-		Navigation.NavigateTo("jizdnirady/edit/" + id);
-	}
-
-	protected void Add()
-	{
-		Navigation.NavigateTo("jizdnirady/edit/" + -1);
-	}
+    protected void Add()
+    {
+        Navigation.NavigateTo("jizdnirady/edit/" + -1);
+    }
 
 }

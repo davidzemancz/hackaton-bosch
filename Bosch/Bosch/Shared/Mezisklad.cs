@@ -12,5 +12,6 @@ namespace Bosch.Shared
         public string Jmeno { get; set; }
         public List<Vlacek> seznamVlacku { get; set; }
         public JizdniRad jizdniRad { get; set; } //prijezdy vlaku
+        public List<Objednavka> objednavky { get; set; }
     }
 }

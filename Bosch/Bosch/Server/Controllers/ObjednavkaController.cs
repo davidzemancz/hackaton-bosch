@@ -52,8 +52,6 @@ namespace Bosch.Server.Controllers
 					break;
 				}
             }
-
-
             Database.Objednavky.Add(objednavka);
         }
 

@@ -40,5 +40,11 @@ namespace Bosch.Server.Controllers
                 Database.JizdniRady[Database.JizdniRady.FindIndex(t => t.Id == jizdniRad.Id)] = jizdniRad;
             }
         }
+        [HttpPost]
+        [Route("/api/jizdnirad/remove/{id:int}")]
+        public void Remove(int id)
+        {
+            Database.RemoveJizdniRad(id);
+        }
     }
 }

@@ -6,9 +6,13 @@ namespace Bosch.Server
 {
     public class Database
     {
+        public static List<Material> drevo = new List<Material> {
+            new Material() {Nazev = "Dřevo"},
+            };
+
         public static List<Vlacek> Vlacky { get; set; } = new List<Vlacek>
         {
-            new Vlacek() { Id = 0, Jmeno = "A", Kapacita = 20 },
+            new Vlacek() { Id = 0, Jmeno = "A", Kapacita = 20, Naklad = drevo },
             new Vlacek() { Id = 1, Jmeno = "B",  Kapacita = 50 },
             new Vlacek() { Id = 2, Jmeno = "C", Kapacita = 100 },
         };
@@ -48,9 +52,10 @@ namespace Bosch.Server
             Materialy[index] = material;
         }
 
-        public static void RemoveMaterial(Material material)
+        public static void RemoveMaterial(int id)
         {
-            Materialy.Remove(material);
+            int index = Database.Materialy.FindIndex(m => m.Id == id);
+            Materialy.RemoveAt(index);
         }
 
         public static void AddMaterial(Material material)
@@ -77,9 +82,10 @@ namespace Bosch.Server
             Mezisklady[index] = mezisklad;
         }
 
-        public static void RemoveMezisklad(Mezisklad mezisklad)
+        public static void RemoveMezisklad(int id)
         {
-            Mezisklady.Remove(mezisklad);
+            int index = Database.Mezisklady.FindIndex(t => t.Id == id);
+            Mezisklady.RemoveAt(index);
         }
 
         public static void AddMezisklad(Mezisklad mezisklad)
@@ -123,9 +129,10 @@ namespace Bosch.Server
             Trasy[index] = trasa;
         }
 
-        public static void RemoveTrasa(Trasa trasa)
+        public static void RemoveTrasa(int id)
         {
-            Trasy.Remove(trasa);
+            int index = Database.Trasy.FindIndex(t => t.Id == id);
+            Trasy.RemoveAt(index);
         }
 
         public static void AddTrasa(Trasa trasa)
@@ -157,9 +164,10 @@ namespace Bosch.Server
             JizdniRady[index] = jizdniRad;
         }
 
-        public static void RemoveJizdniRad(JizdniRad jizdniRad)
+        public static void RemoveJizdniRad(int id)
         {
-            JizdniRady.Remove(jizdniRad);
+            int index = Database.JizdniRady.FindIndex(t => t.Id == id);
+            JizdniRady.RemoveAt(index);
         }
 
         public static void AddJizdniRad(JizdniRad jizdniRad)
@@ -175,10 +183,6 @@ namespace Bosch.Server
         {
         };
 
-        public static void RemoveObjednavka(Objednavka objednavka)
-        {
-            Objednavky.Remove(objednavka);
-        }
 
         public static void AddObjednavka(Objednavka objednavka)
         {
@@ -202,9 +206,10 @@ namespace Bosch.Server
             Uzivatele[index] = uzivatel;
         }
 
-        public static void RemoveUzivatel(Uzivatel uzivatel)
+        public static void RemoveUzivatel(int id)
         {
-            Uzivatele.Remove(uzivatel);
+            int index = Database.Uzivatele.FindIndex(t => t.Id == id);
+            Uzivatele.RemoveAt(index);
         }
 
         public static void AddUzivatel(Uzivatel uzivatel)

@@ -36,5 +36,12 @@ namespace Bosch.Server.Controllers
         {
             return Database.Materialy.ToArray();
         }
+
+        [HttpPost]
+        [Route("/api/material/remove/{id:int}")]
+        public void Remove(int id)
+        {
+            Database.RemoveMaterial(id);
+        }
     }
 }

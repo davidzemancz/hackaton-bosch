@@ -35,9 +35,10 @@ namespace Bosch.Server
 
         public static List<Material> Materialy { get; set; } = new List<Material>
         {
-            new Material() {Id = 1, Nazev = "Uhli"},
-            new Material() {Id = 2, Nazev = "Srouby"},
-            new Material() {Id = 3, Nazev = "lidi"},
+            new Material() {Id = 0, Nazev = "Dřevo"},
+            new Material() {Id = 1, Nazev = "Uhlí"},
+            new Material() {Id = 2, Nazev = "Šrouby"},
+            new Material() {Id = 3, Nazev = "Lidé"},
         };
 
         public static void EditMaterial(Material material)
@@ -171,7 +172,6 @@ namespace Bosch.Server
 
         public static List<Objednavka> Objednavky { get; set; } = new List<Objednavka>()
         {
-            new Objednavka() { Id = 1, Mezisklad = Mezisklady[0], Material = Materialy[0] }
         };
 
         public static void RemoveObjednavka(Objednavka objednavka)

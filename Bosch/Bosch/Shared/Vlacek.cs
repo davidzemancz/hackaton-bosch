@@ -12,7 +12,7 @@ namespace Bosch.Shared
         public string sapID { get; set; }
         public string Jmeno { get; set; }
         public int Kapacita { get; set; }
-        public List<Material> Naklad { get; set; }
+        public List<Material> Naklad { get; set; } = new List<Material>();
         //TODO: zastavky, jizdni rad
 
     }

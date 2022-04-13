@@ -8,9 +8,9 @@ namespace Bosch.Server
     {
         public static List<Vlacek> Vlacky { get; set; } = new List<Vlacek>
         {
-            new Vlacek() { Id = 0, Kapacita = 20 },
-            new Vlacek() { Id = 1,  Kapacita = 50 },
-            new Vlacek() { Id = 2,  Kapacita = 100 },
+            new Vlacek() { Id = 0, Jmeno = "A", Kapacita = 20 },
+            new Vlacek() { Id = 1, Jmeno = "B",  Kapacita = 50 },
+            new Vlacek() { Id = 2, Jmeno = "C",  Kapacita = 100 },
         };
 
         public static void EditVlacek(Vlacek vlacek)

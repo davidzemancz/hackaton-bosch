@@ -3,21 +3,27 @@
 @inject HttpClient Http
 
 <h3>Správa vláčku</h3>
+<EditForm Model="@vlacek" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <InputText id="name" @bind-Value="vlacek.Jmeno" />
+    <button type="submit">Submit</button>
+</EditForm>
 
 
 @code { [Parameter]
     public int Id { get; set; }
 
-    private Vlacek Vlacek { get; set; }
+    private Vlacek vlacek { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        Vlacek = await Http.GetFromJsonAsync<Vlacek>($"api/vlacek/edit/{Id}");
+        vlacek = await Http.GetFromJsonAsync<Vlacek>($"api/vlacek/edit/{Id}");
     }
 
     private async void HandleValidSubmit()
     {
-            //await AgentService.Save(Agent);
-            //Navigation.NavigateTo("agent/list");
-        var result = await Http.PostAsJsonAsync<Vlacek>($"api/vlacek/save", Vlacek);
+        //await AgentService.Save(Agent);
+        //Navigation.NavigateTo("agent/list");
+        var result = await Http.PostAsJsonAsync<Vlacek>($"api/vlacek/save", vlacek);
     } }

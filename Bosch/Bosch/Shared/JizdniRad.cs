@@ -14,7 +14,7 @@ namespace Bosch.Shared
 
         public DateTime Cas { get; set; }
 
-        public object Trasa { get; set; }
+        public Trasa Trasa { get; set; }
     }
 
     public class JizdniRad

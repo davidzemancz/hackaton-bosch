@@ -1,0 +1,51 @@
+[33mcae0fff[m[33m ([m[1;36mHEAD -> [m[1;32mdita[m[33m, [m[1;31morigin/dita[m[33m)[m HEAD@{0}: checkout: moving from main to dita
+[33mb1ecc3b[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/david[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{1}: checkout: moving from dita to main
+[33mcae0fff[m[33m ([m[1;36mHEAD -> [m[1;32mdita[m[33m, [m[1;31morigin/dita[m[33m)[m HEAD@{2}: merge main: Merge made by the 'recursive' strategy.
+[33m33ff175[m HEAD@{3}: checkout: moving from main to dita
+[33mb1ecc3b[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/david[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{4}: pull --verbose --progress --no-edit --no-stat --recurse-submodules=no origin: Fast-forward
+[33m0d61ff8[m HEAD@{5}: checkout: moving from dita to main
+[33m33ff175[m HEAD@{6}: checkout: moving from main to dita
+[33m0d61ff8[m HEAD@{7}: checkout: moving from dita to main
+[33m33ff175[m HEAD@{8}: reset: moving to HEAD
+[33m33ff175[m HEAD@{9}: commit: nice
+[33md3135f9[m[33m ([m[1;31morigin/petr[m[33m, [m[1;32mpetr[m[33m)[m HEAD@{10}: merge petr: Fast-forward
+[33md012424[m HEAD@{11}: checkout: moving from petr to dita
+[33md3135f9[m[33m ([m[1;31morigin/petr[m[33m, [m[1;32mpetr[m[33m)[m HEAD@{12}: pull --verbose --progress --no-edit --no-stat --recurse-submodules=no origin: Fast-forward
+[33mbacb0fd[m HEAD@{13}: checkout: moving from dita to petr
+[33md012424[m HEAD@{14}: commit: detailpage
+[33mbeed965[m HEAD@{15}: checkout: moving from petr to dita
+[33mbacb0fd[m HEAD@{16}: checkout: moving from dita to petr
+[33mbeed965[m HEAD@{17}: commit: detail
+[33mded2395[m HEAD@{18}: commit: vlacek load
+[33m1864aae[m HEAD@{19}: merge main: Merge made by the 'recursive' strategy.
+[33m57f3957[m HEAD@{20}: checkout: moving from main to dita
+[33m0d61ff8[m HEAD@{21}: pull --verbose --progress --no-edit --no-stat --recurse-submodules=no origin: Fast-forward
+[33m3e18a67[m HEAD@{22}: checkout: moving from dita to main
+[33m57f3957[m HEAD@{23}: merge main: Merge made by the 'recursive' strategy.
+[33m1b26fbe[m HEAD@{24}: checkout: moving from main to dita
+[33m3e18a67[m HEAD@{25}: pull --verbose --progress --no-edit --no-stat --recurse-submodules=no origin: Fast-forward
+[33m1ed05aa[m HEAD@{26}: checkout: moving from dita to main
+[33m1b26fbe[m HEAD@{27}: commit: naklad
+[33m1ed05aa[m HEAD@{28}: merge main: Fast-forward
+[33ma9ebc32[m HEAD@{29}: checkout: moving from main to dita
+[33m1ed05aa[m HEAD@{30}: pull --verbose --progress --no-edit --no-stat --recurse-submodules=no origin: Fast-forward
+[33ma9ebc32[m HEAD@{31}: checkout: moving from dita to main
+[33ma9ebc32[m HEAD@{32}: merge main: Fast-forward
+[33m1e44547[m HEAD@{33}: checkout: moving from main to dita
+[33ma9ebc32[m HEAD@{34}: pull --verbose --progress --no-edit --no-stat --recurse-submodules=no origin: Fast-forward
+[33m1e44547[m HEAD@{35}: checkout: moving from dita to main
+[33m1e44547[m HEAD@{36}: checkout: moving from main to dita
+[33m1e44547[m HEAD@{37}: checkout: moving from dita to main
+[33m1e44547[m HEAD@{38}: merge main: Fast-forward
+[33macd8de7[m HEAD@{39}: checkout: moving from main to dita
+[33m1e44547[m HEAD@{40}: pull --verbose --progress --no-edit --no-stat --recurse-submodules=no origin: Fast-forward
+[33m704bda8[m HEAD@{41}: pull --verbose --progress --no-edit --no-stat --recurse-submodules=no origin: Merge made by the 'recursive' strategy.
+[33macd8de7[m HEAD@{42}: merge dita: Fast-forward
+[33m7392aec[m HEAD@{43}: checkout: moving from dita to main
+[33macd8de7[m HEAD@{44}: commit: název
+[33me3ef1d6[m HEAD@{45}: commit: Jsem amazing
+[33m7392aec[m HEAD@{46}: checkout: moving from main to dita
+[33m7392aec[m HEAD@{47}: pull: Fast-forward
+[33m36b9123[m HEAD@{48}: pull: Fast-forward
+[33m41b6d1f[m HEAD@{49}: pull: Fast-forward
+[33maa5af9f[m HEAD@{50}: clone: from https://github.com/davidzemancz/hackaton-bosch.git

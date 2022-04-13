@@ -12,9 +12,9 @@ namespace Bosch.Shared
 
         public Vlacek Vlacek { get; set; }
 
-        public DateTime Cas { get; set; }
+        public DateTime CasOdjezdu { get; set; }
 
-        public Trasa Trasa { get; set; }
+        public Trasa Trasa { get; set; } = new Trasa();
     }
 
     public class JizdniRad

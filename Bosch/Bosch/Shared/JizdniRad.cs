@@ -14,7 +14,7 @@ namespace Bosch.Shared
 
         public DateTime CasOdjezdu { get; set; }
 
-        public Trasa Trasa { get; set; }
+        public Trasa Trasa { get; set; } = new Trasa();
     }
 
     public class JizdniRad

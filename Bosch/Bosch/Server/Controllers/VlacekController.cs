@@ -44,7 +44,7 @@ namespace Bosch.Server.Controllers
         [Route("/api/vlacek/remove")]
         public void Remove(int id)
         {
-            Database.RemoveVlacek(Database.Vlacky.Find(t => t.Id == id));
+           // Database.RemoveVlacek(Database.Vlacky.Find(t => t.Id == id));
         }
 
     }

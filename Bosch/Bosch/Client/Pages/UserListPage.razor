@@ -1,39 +1,42 @@
-﻿@page "/vlacek/list"
+﻿@page "/uzivatel/list"
 @using Bosch.Shared
 @inject HttpClient Http
 @inject NavigationManager NavManager
 
-<h1>Vláčky</h1>
 
-@if (vlacky == null)
+<h3>Uživatelé</h3>
+
+@if (uzivatele == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    <table class="table" id="myTable">
+    <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Jméno</th>
-                <th>Kapacita</th>
-                <th>Naklad</th>
+                <th>Příjmení</th>
+                <th>Login</th>
+                <th>Role</th>
                 <th>Edit</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var vlacek in vlacky)
+            @foreach (var uzivatel in uzivatele)
             {
                 <tr>
-                    <td class=vlacek>@vlacek.Id</td>
-                    <td> @vlacek.Jmeno</td>
-                    <td>@vlacek.Kapacita</td>
-                    <td>@vlacek.Naklad</td>
+                    <td class=vlacek>@uzivatel.Id</td>
+                    <td> @uzivatel.Jmeno</td>
+                    <td>@uzivatel.Prijmeni</td>
+                    <td>@uzivatel.Login</td>
+                    <td>@uzivatel.Role</td>
                     <td>
-                        <button type="button" class="btn btn-outline-primary btn-sm" @onclick="() => EditVlacku(vlacek.Id)">
+                        <button type="button" class="btn btn-outline-primary btn-sm" @onclick="() => Edit(uzivatel.Id)">
                             <span class="oi oi-pencil" aria-hidden="true"></span>
                         </button>
-                        <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Delete(vlacek.Id))">
+                        <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Delete(uzivatel.Id))">
                             <span class="oi oi-trash" aria-hidden="true"></span>
                         </button>
                     </td>
@@ -47,12 +50,14 @@ else
     </button>
 }
 
+
+
 @code {
-    private Vlacek[] vlacky;
+    private Uzivatel[] uzivatele;
 
     protected override async Task OnInitializedAsync()
     {
-        vlacky = await Http.GetFromJsonAsync<Vlacek[]>("/api/vlacek/list");
+        uzivatele = await Http.GetFromJsonAsync<Uzivatel[]>("/api/uzivatel/list");
     }
 
     private async void Delete(int id)
@@ -60,14 +65,17 @@ else
         //var result = await Http.PostAsJsonAsync<Vlacek>($"api/vlacek/remove", id);
     }
 
-    private void EditVlacku(int id)
+    private void Edit(int id)
     {
 
-        NavManager.NavigateTo("/vlacek/edit/" + id);
+        NavManager.NavigateTo("/uzivatel/edit/" + id);
     }
     protected void Add()
     {
-        NavManager.NavigateTo("/vlacek/add");
+        NavManager.NavigateTo("/uzivatel/add");
 
     }
+
+
+
 }

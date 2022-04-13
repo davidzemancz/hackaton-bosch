@@ -183,5 +183,12 @@ namespace Bosch.Server
             Objednavky.Add(objednavka);
 
         }
+
+        public static List<Uzivatel> Uzivatele { get; set; } = new List<Uzivatel>
+        {
+            new Uzivatel(){Id = 1, Jmeno = "David", Prijmeni = "Zeman", Login = "dz", Role = Roles.David},
+            new Uzivatel(){Id = 1, Jmeno = "Petr", Prijmeni = "Smid", Login = "petr", Role = Roles.Admin}
+
+        };
     }
 }

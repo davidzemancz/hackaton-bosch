@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bosch.Shared
 {
-    class mezisklad
+    class Mezisklad
     {
         public int Id { get; set; }
         public List<Vlacek> seznamVlacku { get; set; }

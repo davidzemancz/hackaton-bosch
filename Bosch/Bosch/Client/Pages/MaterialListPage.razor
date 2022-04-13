@@ -51,7 +51,7 @@ else
     private async void Delete(int id)
     {
         var result = await Http.PostAsJsonAsync<int>($"/api/material/remove/{id}", id);
-        NavManager.NavigateTo("/material/list");
+        NavManager.NavigateTo("/material/list", forceLoad: true);
     }
 
     private void EditMaterialu(int id)

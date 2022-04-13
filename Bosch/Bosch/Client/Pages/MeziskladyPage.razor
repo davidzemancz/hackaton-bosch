@@ -14,7 +14,7 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>N8zev</th>
+                <th>Název</th>
                 <th>Edit</th>
             </tr>
         </thead>
@@ -51,7 +51,7 @@ else
     private async void Delete(int id)
     {
         var result = await Http.PostAsJsonAsync<int>($"/api/mezisklad/remove/{id}", id);
-        NavManager.NavigateTo("/mezisklad/list");
+        NavManager.NavigateTo("/mezisklad/list", forceLoad: true);
     }
 
     private void Edit(int id)

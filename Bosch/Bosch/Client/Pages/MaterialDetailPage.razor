@@ -3,13 +3,10 @@
 @inject HttpClient Http
 @inject NavigationManager NavManager
 
-
-<h3>Správa Materialu</h3>
-
 @if (material != null)
 {
 
-    <h3>Správa Meziskladů</h3>
+<h3>Správa Materialu</h3>
     <EditForm Model="@material" OnValidSubmit="@HandleValidSubmit">
         <DataAnnotationsValidator />
         <ValidationSummary />
@@ -27,12 +24,12 @@
 
     protected override async Task OnInitializedAsync()
     {
-        material = await Http.GetFromJsonAsync<Material>("/api/material/edit/" + Id);
+        material = await Http.GetFromJsonAsync<Material>($"/api/material/edit/{Id}");
     }
 
     private async void HandleValidSubmit()
     {
-        var result = await Http.PostAsJsonAsync<Material>($"api/material/save", material);
+        var result = await Http.PostAsJsonAsync<Material>($"/api/material/save", material);
         NavManager.NavigateTo("/material/list");
     }
 

@@ -8,7 +8,7 @@ namespace Bosch.Shared
 {
 	public class Zastavka
 	{
-		public Mezisklad Mezisklad { get; set; }
+		public Mezisklad Mezisklad { get; set; } = new Mezisklad();
 		public DateTime Cas { get; set; }
 
 		public override string ToString()
@@ -19,6 +19,9 @@ namespace Bosch.Shared
 	public class Trasa
 	{
 		public int Id { get; set; }
+
+		public string Nazev { get; set; }
+
 		public List<Zastavka> Zastavky { get; set; }
 
 		

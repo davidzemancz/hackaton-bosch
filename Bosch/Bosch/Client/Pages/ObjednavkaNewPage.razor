@@ -5,7 +5,7 @@
 
 <h3>Nová objednávka</h3>
 
-@if (Objednavka != null && Materialy != null)
+@if (Objednavka != null && Materialy != null && Mezisklady != null)
 {
     <EditForm Model="@Objednavka" OnValidSubmit="@HandleValidSubmit">
         <DataAnnotationsValidator />

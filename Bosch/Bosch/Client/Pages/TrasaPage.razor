@@ -15,8 +15,9 @@ else
 		<thead>
 			<tr>
 				<th>Id</th>
+				<th>Název</th>
 				<th>Zastávky</th>
-				<th>Editace</th>
+				<th>Úpravy</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -24,6 +25,7 @@ else
 			{
 				<tr>
 					<td>@Trasa.Id</td>
+					<td>@Trasa.Nazev</td>
 					<td>@Helpers.ListToString(Trasa.Zastavky)</td>
 					<td>
 						<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Edit(Trasa.Id))">

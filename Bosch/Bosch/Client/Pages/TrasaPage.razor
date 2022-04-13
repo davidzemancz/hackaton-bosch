@@ -1,0 +1,41 @@
+﻿@page "/trasy"
+@using Bosch.Shared
+@inject HttpClient Http
+
+<h3>Trasy</h3>
+
+@if (Trasy == null)
+{
+<p><em>Loading...</em></p>
+}
+else
+{
+<table class="table">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Zastávky</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var Trasa in Trasy)
+		{
+		<tr>
+			<td>@Trasa.Id</td>
+			<td>@Helpers.ListToString(Trasa.Zastavky)</td>
+		</tr>
+		}
+	</tbody>
+</table>
+}
+
+@code {
+	private List<Trasa> Trasy;
+
+	protected override async Task OnInitializedAsync()
+	{
+		Trasy = await Http.GetFromJsonAsync<List<Trasa>>("/api/trasa/list");
+	}
+
+}
+

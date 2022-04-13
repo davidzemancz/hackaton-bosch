@@ -5,13 +5,13 @@
 @if (vlacek != null)
 {
 
-<h3>Správa vláčku</h3>
-<EditForm Model="@vlacek" OnValidSubmit="@HandleValidSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <InputText id="name" @bind-Value="vlacek.Jmeno" />
-    <button type="submit">Submit</button>
-</EditForm>
+    <h3>Správa vláčku</h3>
+    <EditForm Model="@vlacek" OnValidSubmit="@HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <InputText id="name" @bind-Value="vlacek.Jmeno" />
+        <button type="submit">Submit</button>
+    </EditForm>
 }
 
 

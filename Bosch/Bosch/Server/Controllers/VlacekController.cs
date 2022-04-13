@@ -36,7 +36,13 @@ namespace Bosch.Server.Controllers
         public void Save(Vlacek vlacek)
         {
             Database.EditVlacek(vlacek);
-            
+        }
+
+        [HttpPost]
+        [Route("/api/vlacek/remove")]
+        public void Remove(int id)
+        {
+            Database.RemoveVlacek(Database.Vlacky.Find(t => t.Id == id));
         }
 
     }

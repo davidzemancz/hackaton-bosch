@@ -14,20 +14,16 @@ else
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Typ</th>
-                <th>Material</th>
                 <th>kapacita</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var vlacek in vlacky)
             {
-                <tr>
-                    <td class=vlacek>@vlacek.Id</td>
-                    <td>@vlacek.Typ</td>
-                    <td>@vlacek.Material</td>
-                    <td>@vlacek.Kapacita</td>
-                </tr>
+            <tr>
+                <td class=vlacek>@vlacek.Id</td>
+                <td>@vlacek.Kapacita</td>
+            </tr>
             }
         </tbody>
     </table>

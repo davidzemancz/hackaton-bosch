@@ -24,6 +24,7 @@ namespace Bosch.Server.Controllers
         [Route("/api/trasa/edit/{id:int}")]
         public Trasa Edit(int id)
         {
+            if (id == -1) return new Trasa();
             return Database.Trasy.First(t => t.Id == id);
 
 

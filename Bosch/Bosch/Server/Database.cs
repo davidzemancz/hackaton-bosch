@@ -6,7 +6,12 @@ namespace Bosch.Server
 {
     public class Database
     {
-        public static List<Vlacek> Vlacky { get; set; } = new List<Vlacek>();
+        public static List<Vlacek> Vlacky { get; set; } = new List<Vlacek>
+        {
+            new Vlacek() { Id = 0, Kapacita = 20 },
+            new Vlacek() { Id = 1,  Kapacita = 50 },
+            new Vlacek() { Id = 2,  Kapacita = 100 },
+        };
 
         public static List<Material> Materialy { get; set; } = new List<Material>();
 

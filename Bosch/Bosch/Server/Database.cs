@@ -108,11 +108,11 @@ namespace Bosch.Server
 
         public static List<Trasa> Trasy = new List<Trasa>
             {
-                new Trasa() { Id = 0, Zastavky = Zastavky },
+                new Trasa() { Id = 0, Nazev = "A", Zastavky = Zastavky },
 
-                new Trasa() { Id = 1, Zastavky = Zastavky },
+                new Trasa() { Id = 1, Nazev = "B", Zastavky = Zastavky },
 
-                new Trasa() { Id = 2, Zastavky = Zastavky }
+                new Trasa() { Id = 2, Nazev = "C", Zastavky = Zastavky }
             };
 
         public static void EditTrasa (Trasa trasa)

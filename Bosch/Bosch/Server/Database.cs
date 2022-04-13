@@ -10,7 +10,15 @@ namespace Bosch.Server
 
         public static List<Material> Materialy { get; set; } = new List<Material>();
 
-        public static List<JizdniRad> JizdniRady { get; set; } = new List<JizdniRad>();
+        public static List<JizdniRad> JizdniRady { get; set; } = new List<JizdniRad>
+        {
+            new JizdniRad() { Id = 1, Nazev = "Všední dny", Platnost = "Po, Út, St, Čt, Pá", Jizdy = new List<Jizda>
+            {
+                new Jizda() { Id = 0, Trasa = Trasy[0], Vlacek = Vlacky[0]  },
+                new Jizda() { Id = 1, Trasa = Trasy[1], Vlacek = Vlacky[1]  }
+            } 
+            },
+        };
 
         public static List<Mezisklad> Mezisklady { get; set; } = new List<Mezisklad>();
 

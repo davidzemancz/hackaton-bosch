@@ -54,7 +54,7 @@ else
     private async void Delete(int id)
     {
         var result = await Http.PostAsJsonAsync<int>($"/api/trasa/remove/{id}", id);
-        Navigation.NavigateTo("/trasy");
+        Navigation.NavigateTo("/trasy", forceLoad: true);
     }
 
     protected void Edit(int id)

@@ -61,7 +61,7 @@ else
     private async void Delete(int id)
     {
         var result = await Http.PostAsJsonAsync<int>($"/api/uzivatel/remove/{id}", id);
-        NavManager.NavigateTo("/uzivatel/list");
+        NavManager.NavigateTo("/uzivatel/list", forceLoad: true);
     }
 
     private void Edit(int id)

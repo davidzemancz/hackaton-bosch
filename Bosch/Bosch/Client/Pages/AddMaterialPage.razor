@@ -1,0 +1,24 @@
+﻿@page "/material/add"
+@using Bosch.Shared
+@inject HttpClient Http
+@inject NavigationManager NavManager
+
+<h3>Nový material</h3>
+<EditForm Model="@material" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <InputText id="name" @bind-Value="material.Nazev" />
+    <button type="submit">Submit</button>
+</EditForm>
+
+@code {
+     Material material = new Material();
+
+    private async void HandleValidSubmit()
+    {
+        var result = await Http.PostAsJsonAsync<Material>($"api/material/add", material);
+        NavManager.NavigateTo("/material/list");
+    }
+
+
+}

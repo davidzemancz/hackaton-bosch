@@ -190,5 +190,24 @@ namespace Bosch.Server
             new Uzivatel(){Id = 1, Jmeno = "Petr", Prijmeni = "Smid", Login = "petr", Role = Roles.Admin}
 
         };
+
+        public static void EditUzivatel(Uzivatel uzivatel)
+        {
+            int index = Uzivatele.FindIndex(u => u.Id == uzivatel.Id);
+            Uzivatele[index] = uzivatel;
+        }
+
+        public static void RemoveUzivatel(Uzivatel uzivatel)
+        {
+            Uzivatele.Remove(uzivatel);
+        }
+
+        public static void AddUzivatel(Uzivatel uzivatel)
+        {
+            int maxIndex = Uzivatele[Uzivatele.Count - 1].Id;
+            uzivatel.Id = maxIndex + 1;
+
+            Uzivatele.Add(uzivatel);
+        }
     }
 }

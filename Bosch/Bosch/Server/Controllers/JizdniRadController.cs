@@ -15,7 +15,7 @@ namespace Bosch.Server.Controllers
         [Route("/api/jizdnirad/jizdy")]
         public List<Jizda> GetJizdy()
         {
-            return JizdniRad.Jizdy;
+           return Database..Jizdy;
         }
     }
 }

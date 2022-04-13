@@ -11,15 +11,24 @@
         <DataAnnotationsValidator />
         <ValidationSummary />
             <div class="mb-3">
-            <select class="form-select" aria-label="Materiál" @bind="Objednavka.Mezisklad.Id">
-                @foreach (var material in Materialy)
-                {
-                    <option value="@material.Id">@material.Nazev</option>
-                }
-            </select>
-         </div>
+                <select @bind="Objednavka.Mezisklad.Id" class="form-select" aria-label="Stanoviště">
+                    @foreach (var material in Materialy)
+                    {
+                        <option value="@material.Id">@material.Nazev</option>
+                    }
+                </select>
+            </div>
+            <div class="mb-3">
+                <select @bind="Objednavka.Material.Id" class="form-select" aria-label="Materiál">
+                    @foreach (var material in Materialy)
+                    {
+                        <option value="@material.Id">@material.Nazev</option>
+                    }
+                </select>
+            </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </EditForm>
+
 }
 
 @code {

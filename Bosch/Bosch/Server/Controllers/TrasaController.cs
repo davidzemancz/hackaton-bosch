@@ -19,5 +19,12 @@ namespace Bosch.Server.Controllers
         {
             return Database.Trasy;
         }
+
+        [HttpGet]
+        [Route("/api/trasa/edit/{id:int}")]
+        public Trasa Edit(int id)
+        {
+            return Database.Trasy.First(t => t.Id == id);
+        }
     }
 }

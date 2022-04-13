@@ -6,20 +6,14 @@ namespace Bosch.Server
 {
     public class Database
     {
-        public static List<Vlacek> Vlacky { get; set; } = new List<Vlacek>();
-
-        public static List<Material> Materialy { get; set; } = new List<Material>();
-
-        public static List<JizdniRad> JizdniRady { get; set; } = new List<JizdniRad>
+        public static List<Vlacek> Vlacky { get; set; } = new List<Vlacek>
         {
-            new JizdniRad() { Id = 1, Nazev = "Všední dny", Platnost = "Po, Út, St, Čt, Pá", Jizdy = new List<Jizda>
-            {
-                new Jizda() { Id = 0, Trasa = Trasy[0], Vlacek = Vlacky[0]  },
-                new Jizda() { Id = 1, Trasa = Trasy[1], Vlacek = Vlacky[1]  }
-            } 
-            },
+            new Vlacek() { Id = 0, Kapacita = 20 },
+            new Vlacek() { Id = 1,  Kapacita = 50 },
+            new Vlacek() { Id = 2,  Kapacita = 100 },
         };
 
+        public static List<Material> Materialy { get; set; } = new List<Material>();
         public static List<Mezisklad> Mezisklady { get; set; } = new List<Mezisklad>()
         {
             new Mezisklad { Id = 0, Jmeno = "Praha", jizdniRad = null, seznamVlacku = { } },
@@ -55,5 +49,17 @@ namespace Bosch.Server
 
                 new Trasa() { Id = 2, Zastavky = Zastavky }
             };
+
+        public static List<JizdniRad> JizdniRady { get; set; } = new List<JizdniRad>
+        {
+            new JizdniRad() { Id = 1, Nazev = "Všední dny", Platnost = "Po, Út, St, Čt, Pá", Jizdy = new List<Jizda>
+            {
+                new Jizda() { Id = 0, Trasa = Trasy[0], Vlacek = Vlacky[0]  },
+                new Jizda() { Id = 1, Trasa = Trasy[1], Vlacek = Vlacky[1]  }
+            } 
+            },
+        };
+
+
     }
 }

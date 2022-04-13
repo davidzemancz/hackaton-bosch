@@ -8,7 +8,8 @@ namespace Bosch.Shared
 {
     public class Material
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
+        public int Nazev { get; set; }
     }
 }
 

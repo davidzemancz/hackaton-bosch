@@ -1,6 +1,7 @@
 ﻿using Bosch.Shared;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Bosch.Server.Controllers
 {
@@ -16,10 +17,17 @@ namespace Bosch.Server.Controllers
             };
 
         [HttpGet]
+        [Route("/api/vlacek/edit/{id:int}")]
+        public Vlacek Find(int Id)
+        {
+            return Seznam[Id];
+        }
+
+        [HttpGet]
         [Route("/api/vlacek/list")]
         public Vlacek[] List()
         {
-            return Seznam;
+            return Database.Vlacky.ToArray();
         }
     }
 }

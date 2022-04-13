@@ -6,9 +6,13 @@ namespace Bosch.Server
 {
     public class Database
     {
+        public static List<Material> drevo = new List<Material> {
+            new Material() {Nazev = "Dřevo"},
+            };
+
         public static List<Vlacek> Vlacky { get; set; } = new List<Vlacek>
         {
-            new Vlacek() { Id = 0, Jmeno = "A", Kapacita = 20 },
+            new Vlacek() { Id = 0, Jmeno = "A", Kapacita = 20, Naklad = drevo },
             new Vlacek() { Id = 1, Jmeno = "B",  Kapacita = 50 },
             new Vlacek() { Id = 2, Jmeno = "C", Kapacita = 100 },
         };

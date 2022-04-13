@@ -52,10 +52,7 @@ namespace Bosch.Server.Controllers
 					break;
 				}
             }
-
-
             Database.Objednavky.Add(objednavka);
-            objednavka.Mezisklad.objednavky.Add(objednavka);
         }
 
 

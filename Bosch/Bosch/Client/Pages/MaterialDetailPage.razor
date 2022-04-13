@@ -6,27 +6,35 @@
 
 <h3>Správa Materialu</h3>
 
+@if (material != null)
+{
 
-@if (material == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <p>@material.Id</p>
+    <h3>Správa Meziskladů</h3>
+    <EditForm Model="@material" OnValidSubmit="@HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <InputText id="name" @bind-Value="material.Nazev" />
+        <button type="submit">Submit</button>
+    </EditForm>
 }
 
 @code
 {
     [Parameter]
     public int Id { get; set; }
+    public Material material;
+
 
     protected override async Task OnInitializedAsync()
     {
         material = await Http.GetFromJsonAsync<Material>("/api/material/edit/" + Id);
+    }
+
+    private async void HandleValidSubmit()
+    {
+        var result = await Http.PostAsJsonAsync<Material>($"api/material/save", material);
         NavManager.NavigateTo("/material/list");
     }
 
-    public Material material;
 }
 

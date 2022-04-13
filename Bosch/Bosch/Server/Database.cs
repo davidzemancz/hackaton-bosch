@@ -25,7 +25,12 @@ namespace Bosch.Server
                     new Zastavka() { Mezisklad = null, Cas = new DateTime(2022, 5, 10, 8, 30, 52) } } },
             };
 
-        public static List<Material> Materialy { get; set; } = new List<Material>();
+        public static List<Material> Materialy { get; set; } = new List<Material>
+        {
+            new Material() {Id = 1, Nazev = "Uhli"},
+            new Material() {Id = 2, Nazev = "Srouby"},
+            new Material() {Id = 3, Nazev = "lidi"},
+        };
 
         public static List<JizdniRad> JizdniRady { get; set; } = new List<JizdniRad>
         {

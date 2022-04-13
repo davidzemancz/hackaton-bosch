@@ -11,10 +11,42 @@
 }
 else
 {
-<p>@Trasa.Id</p>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Zastávka</th>
+				<th>Editace</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var Zastavka in Trasa.Zastavky)
+			{
+			<tr>
+				<td>@Zastavka.Mezisklad.Id</td>
+				<td>@Zastavka.Mezisklad.Jmeno</td>
+				<td>
+					<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Delete(Zastavka.Mezisklad.Id))">
+						<span class="oi oi-trash" aria-hidden="true"></span>
+					</button>
+					<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Up(Zastavka.Mezisklad.Id))">
+						<span class="oi oi-arrow-top" aria-hidden="true"></span>
+					</button>
+					<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Down(Zastavka.Mezisklad.Id))">
+						<span class="oi oi-arrow-bottom" aria-hidden="true"></span>
+					</button>
+
+				</td>
+			</tr>
+			}
+		</tbody>
+	</table>
+	<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Add())">
+		<span class="oi oi-plus" aria-hidden="true"></span>
+	</button>
 }
 
-@code 
+@code
 {
 	[Parameter]
 	public int Id { get; set; }
@@ -25,4 +57,27 @@ else
 	}
 
 	public Trasa Trasa;
+
+
+
+	private void Up(int id)
+	{
+
+	}
+
+	private void Down(int id)
+	{
+
+	}
+
+	private void Delete(int id)
+	{
+
+	}
+
+	protected void Add()
+	{
+		Navigation.NavigateTo("trasy/add");
+
+	}
 }

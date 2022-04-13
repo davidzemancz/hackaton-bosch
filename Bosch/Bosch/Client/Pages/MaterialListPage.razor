@@ -37,6 +37,9 @@ else
             }
         </tbody>
     </table>
+    <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Add())">
+        <span class="oi oi-plus" aria-hidden="true"></span>
+    </button>
 }
 
 @code {
@@ -51,5 +54,11 @@ else
     {
 
         NavManager.NavigateTo("/material/edit/" + id);
+    }
+
+    protected void Add()
+    {
+        NavManager.NavigateTo("/material/add");
+
     }
 }

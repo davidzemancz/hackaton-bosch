@@ -36,9 +36,10 @@ namespace Bosch.Server
 
         public static List<Material> Materialy { get; set; } = new List<Material>
         {
-            new Material() {Id = 1, Nazev = "Uhli"},
-            new Material() {Id = 2, Nazev = "Srouby"},
-            new Material() {Id = 3, Nazev = "lidi"},
+            new Material() {Id = 0, Nazev = "Dřevo"},
+            new Material() {Id = 1, Nazev = "Uhlí"},
+            new Material() {Id = 2, Nazev = "Šrouby"},
+            new Material() {Id = 3, Nazev = "Lidé"},
         };
 
         public static void EditMaterial(Material material)
@@ -172,7 +173,6 @@ namespace Bosch.Server
 
         public static List<Objednavka> Objednavky { get; set; } = new List<Objednavka>()
         {
-            new Objednavka() { Id = 1, Mezisklad = Mezisklady[0], Material = Materialy[0] }
         };
 
         public static void RemoveObjednavka(Objednavka objednavka)
@@ -187,6 +187,32 @@ namespace Bosch.Server
 
             Objednavky.Add(objednavka);
 
+        }
+
+        public static List<Uzivatel> Uzivatele { get; set; } = new List<Uzivatel>
+        {
+            new Uzivatel(){Id = 1, Jmeno = "David", Prijmeni = "Zeman", Login = "dz", Role = Roles.David},
+            new Uzivatel(){Id = 2, Jmeno = "Petr", Prijmeni = "Smid", Login = "petr", Role = Roles.Admin}
+
+        };
+
+        public static void EditUzivatel(Uzivatel uzivatel)
+        {
+            int index = Uzivatele.FindIndex(u => u.Id == uzivatel.Id);
+            Uzivatele[index] = uzivatel;
+        }
+
+        public static void RemoveUzivatel(Uzivatel uzivatel)
+        {
+            Uzivatele.Remove(uzivatel);
+        }
+
+        public static void AddUzivatel(Uzivatel uzivatel)
+        {
+            int maxIndex = Uzivatele[Uzivatele.Count - 1].Id;
+            uzivatel.Id = maxIndex + 1;
+
+            Uzivatele.Add(uzivatel);
         }
     }
 }

@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace Bosch.Shared
 {
-    public class Vlacek
+    public enum Roles { Admin, User, David}
+    public class Uzivatel
     {
         public int Id { get; set; }
-        public string sapID { get; set; }
         public string Jmeno { get; set; }
-        public int Kapacita { get; set; }
-        public List<Material> Naklad { get; set; } = new List<Material>();
-        //TODO: zastavky, jizdni rad
+        public string Prijmeni { get; set; }
+        public string Login { get; set; }
+        public Roles Role { get; set; }
+
 
     }
 }

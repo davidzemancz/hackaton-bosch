@@ -4,7 +4,7 @@
 @inject HttpClient Http
 @inject NavigationManager NavManager
 
-<h1>Vlacky</h1>
+<h1>Vláčky</h1>
 
 @if (vlacky == null)
 {
@@ -59,7 +59,7 @@ else
     private async void Delete(int id)
     {
         var result = await Http.PostAsJsonAsync<int>($"/api/vlacek/remove/{id}", id);
-        NavManager.NavigateTo("/vlacek/list");
+        NavManager.NavigateTo("/vlacek/list", forceLoad: true);
     }
 
     private void EditVlacku(int id)

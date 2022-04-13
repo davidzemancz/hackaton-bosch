@@ -41,7 +41,7 @@ namespace Bosch.Server.Controllers
         }
 
         [HttpPost]
-        [Route("/api/vlacek/remove")]
+        [Route("/api/vlacek/remove/{id:int}")]
         public void Remove(int id)
         {
             Database.RemoveVlacek(id);

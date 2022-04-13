@@ -21,8 +21,8 @@ namespace Bosch.Server
 
         public static void RemoveVlacek(int id)
         {
-            Vlacek vlacek = Database.Vlacky.Find(t => t.Id == id);
-            Vlacky.Remove(vlacek);
+            int index = Database.Vlacky.FindIndex(t => t.Id == id);
+            Vlacky.RemoveAt(index);
         }
 
         public static void AddVlacek(Vlacek vlacek)

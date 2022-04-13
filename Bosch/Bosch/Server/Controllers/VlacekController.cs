@@ -22,7 +22,9 @@ namespace Bosch.Server.Controllers
                 // TODO v inicializaci vláčku číslo trasy na které jezdí
             };
 
-        public static Vlacek Find(int Id)
+        [HttpGet]
+        [Route("/api/vlacek/edit/{id:int}")]
+        public Vlacek Find(int Id)
         {
             return Seznam[Id];
         }

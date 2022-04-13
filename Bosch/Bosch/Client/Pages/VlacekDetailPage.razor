@@ -1,4 +1,4 @@
-﻿@page "/vlacek/list/edit"
+﻿@page "/vlacek/edit/{id:int}"
 @using Bosch.Shared
 @inject HttpClient Http
 
@@ -14,17 +14,17 @@
 </EditForm>}
 
 @code { [Parameter]
-            public int Id { get; set; }
+    public int Id { get; set; }
 
-            private Vlacek Vlacek { get; set; }
+    private Vlacek Vlacek { get; set; }
 
-            protected override async Task OnInitializedAsync()
-            {
-                Vlacek = await 
-            }
+    protected override async Task OnInitializedAsync()
+    {
+        Vlacek = await Http.GetFromJsonAsync<Vlacek>($"api/vlacek/edit/{Id}");
+    }
 
-            private async void HandleValidSubmit()
-            {
-                await AgentService.Save(Agent);
-                Navigation.NavigateTo("agent/list");
-            } }
+    private async void HandleValidSubmit()
+    {
+        await AgentService.Save(Agent);
+        Navigation.NavigateTo("agent/list");
+    } }

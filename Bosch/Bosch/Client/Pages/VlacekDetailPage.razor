@@ -8,12 +8,12 @@
 {
 
     <h3>Správa vláčku</h3>
-    <EditForm Model="@vlacek" OnValidSubmit="@HandleValidSubmit">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
-        <InputText id="name" @bind-Value="vlacek.Jmeno" />
-        <button type="submit">Submit</button>
-    </EditForm>
+	<EditForm Model="@vlacek" OnValidSubmit="@HandleValidSubmit">
+		<DataAnnotationsValidator />
+		<ValidationSummary />
+		<InputText id="name" @bind-Value="vlacek.Jmeno" />
+		<button type="submit" class="btn btn-outline-primary btn-sm">Uložit</button>
+	</EditForm>
 }
 
 

@@ -1,7 +1,16 @@
 ﻿@page "/"
+@inject NavigationManager NavMan
 
 <h1>Hello, David!</h1>
 
 Welcome to your new app.
 
 
+@code {
+	
+	protected override async Task OnInitializedAsync()
+	{
+		NavMan.NavigateTo("/objednavky");
+	}
+
+}

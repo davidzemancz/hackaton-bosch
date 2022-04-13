@@ -11,11 +11,5 @@ namespace Bosch.Server.Controllers
     public class JizdniRadController : ControllerBase
     {
         
-        [HttpGet]
-        [Route("/api/jizdnirad/jizdy")]
-        public List<Jizda> GetJizdy()
-        {
-           return Database..Jizdy;
-        }
     }
 }

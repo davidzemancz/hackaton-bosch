@@ -1,0 +1,44 @@
+﻿@page "/vlacek/list"
+@using Bosch.Shared
+@inject HttpClient Http
+
+<h1>Vlacky</h1>
+
+@if (vlacky == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Typ</th>
+                <th>Material</th>
+                <th>kapacita</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var vlacek in vlacky)
+            {
+                <tr>
+                    <td class=vlacek>@vlacek.Id</td>
+                    <td>@vlacek.Typ</td>
+                    <td>@vlacek.Material</td>
+                    <td>@vlacek.Kapacita</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Vlacek[] vlacky;
+
+    protected override async Task OnInitializedAsync()
+    {
+        vlacky = await Http.GetFromJsonAsync<Vlacek[]>("/api/vlacek/list");
+    }
+
+}

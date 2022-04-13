@@ -11,7 +11,10 @@
 else
 {
     <p>Je tu @dita.Jmeno</p>
+    <button @onclick="PozdravDitu">Pozdrav @dita.Jmeno</button>
 }
+
+
 
 @code {
     private Dita dita;
@@ -19,5 +22,11 @@ else
     protected override async Task OnInitializedAsync()
     {
         dita = await Http.GetFromJsonAsync<Dita>("/api/dita");
+    }
+
+    private async void PozdravDitu()
+    {
+        var ret = await Http.PostAsJsonAsync<Dita>("/api/dita/pozdrav", dita);
+        dita.Jmeno = "Jirka";
     }
 }

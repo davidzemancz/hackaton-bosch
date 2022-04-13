@@ -25,6 +25,7 @@ namespace Bosch.Server.Controllers
             objednavka.Mezisklad = Database.Mezisklady.First(m => m.Id == objednavka.Mezisklad.Id);
             objednavka.Material = Database.Materialy.First(m => m.Id == objednavka.Material.Id);
             Database.Objednavky.Add(objednavka);
+            objednavka.Mezisklad.objednavky.Add(objednavka);
         }
     }
 }

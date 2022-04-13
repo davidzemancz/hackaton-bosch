@@ -13,7 +13,7 @@ namespace Bosch.Shared
 
 		public override string ToString()
 		{
-			return Mezisklad?.Jmeno + " " + Cas.ToString("HH:mm:ss");
+			return Mezisklad?.Jmeno + ", ";
 		}
 	}
 	public class Trasa

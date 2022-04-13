@@ -15,7 +15,6 @@ else
 	<table class="table">
 		<thead>
 			<tr>
-				<th>Id</th>
 				<th>Trasa</th>
 				<th>Čas odjezdu</th>
 				<th>Náklad</th>
@@ -25,7 +24,6 @@ else
 			@foreach (var Jizda in DnesniJizdy)
 			{
 				<tr>
-					<td>@Jizda.Id</td>
 					<td>@Jizda.Trasa.Jmeno</td>
 					<td>@Jizda.CasOdjezdu.ToString("HH:mm:ss")</td>
 					<td>

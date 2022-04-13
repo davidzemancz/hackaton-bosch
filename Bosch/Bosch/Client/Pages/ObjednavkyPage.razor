@@ -14,7 +14,6 @@ else
 	<table class="table">
 		<thead>
 			<tr>
-				<th>Id</th>
 				<th>Mezisklad</th>
 				<th>Materiál</th>
 			</tr>
@@ -23,7 +22,6 @@ else
 			@foreach (var objednavka in Objednavky)
 			{
 				<tr>
-					<td>@objednavka.Id</td>
 					<td>@objednavka.Mezisklad.Jmeno</td>
 					<td>@objednavka.Material.Nazev</td>
 					<td>

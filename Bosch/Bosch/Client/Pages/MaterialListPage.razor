@@ -14,7 +14,6 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nazev</th>
                 <th>Edit</th>
             </tr>
@@ -23,7 +22,6 @@ else
             @foreach (var material in materialy)
             {
                 <tr>
-                    <td class=vlacek>@material.Id</td>
                     <td>@material.Nazev</td>
                     <td>
                         <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => EditMaterialu(material.Id))">

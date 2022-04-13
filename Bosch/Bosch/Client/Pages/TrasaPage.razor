@@ -14,7 +14,6 @@ else
 	<table class="table">
 		<thead>
 			<tr>
-				<th>Id</th>
 				<th>Název</th>
 				<th>Zastávky</th>
 				<th>Úpravy</th>
@@ -24,7 +23,6 @@ else
 			@foreach (var Trasa in Trasy)
 			{
 				<tr>
-					<td>@Trasa.Id</td>
 					<td>@Trasa.Jmeno</td>
 					<td>@Helpers.ListToString(Trasa.Zastavky)</td>
 					<td>

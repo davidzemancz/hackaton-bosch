@@ -55,7 +55,7 @@ else
         vlacky = await Http.GetFromJsonAsync<Vlacek[]>("/api/vlacek/list");
     }
 
-    private void Delete(int id)
+    private async void Delete(int id)
     {
         //var result = await Http.PostAsJsonAsync<Vlacek>($"api/vlacek/remove", id);
     }

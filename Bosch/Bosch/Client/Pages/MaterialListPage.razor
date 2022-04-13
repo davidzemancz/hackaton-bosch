@@ -1,0 +1,47 @@
+﻿@page "/material/list"
+@using Bosch.Shared
+@inject HttpClient Http
+@inject NavigationManager NavManager
+
+<h3>MaterialListPage</h3>
+
+@if (materialy == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nazev</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var material in materialy)
+            {
+                <tr>
+                    <td class=vlacek>@material.Id</td>
+                    <td>@material.Nazev</td>
+                    <td><button @onclick="() => EditVlacku(material.Id)">Edit</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Material[] materialy;
+
+    protected override async Task OnInitializedAsync()
+    {
+        materialy = await Http.GetFromJsonAsync<Material[]>("/api/material/list");
+    }
+
+    private void EditVlacku(int id)
+    {
+
+        NavManager.NavigateTo($"/material/edit/{id}");
+    }
+}

@@ -14,5 +14,13 @@ namespace Bosch.Server.Controllers
         {
             return Database.Vlacky.ToArray();
         }
+
+        [HttpPost]
+        [Route("/api/vlacek/save")]
+        public void Save(Vlacek vlacek)
+        {
+            Database.EditVlacek(vlacek);
+            
+        }
     }
 }

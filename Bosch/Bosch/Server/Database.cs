@@ -13,6 +13,11 @@ namespace Bosch.Server
             new Vlacek() { Id = 2,  Kapacita = 100 },
         };
 
+        public static void EditVlacek(Vlacek vlacek)
+        {
+            Vlacky[vlacek.Id] = vlacek;
+        }
+
         public static List<Trasa> Trasy = new List<Trasa>
             {
                 new Trasa() { Id = 0, Zastavky = new List<Zastavka> {

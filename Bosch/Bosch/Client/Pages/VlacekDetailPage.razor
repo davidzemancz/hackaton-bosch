@@ -15,8 +15,9 @@
         Vlacek = await Http.GetFromJsonAsync<Vlacek>($"api/vlacek/edit/{Id}");
     }
 
-    private void HandleValidSubmit()
+    private async void HandleValidSubmit()
     {
-        int a = 6;        //await AgentService.Save(Agent);
-        //Navigation.NavigateTo("agent/list");
+            //await AgentService.Save(Agent);
+            //Navigation.NavigateTo("agent/list");
+        var result = await Http.PostAsJsonAsync<Vlacek>($"api/vlacek/save", Vlacek);
     } }

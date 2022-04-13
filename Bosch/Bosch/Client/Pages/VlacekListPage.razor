@@ -11,7 +11,7 @@
 }
 else
 {
-    <table class="table">
+    <table class="table" id="myTable">
         <thead>
             <tr>
                 <th>Id</th>
@@ -30,17 +30,21 @@ else
                     <td>@vlacek.Kapacita</td>
                     <td>@vlacek.Naklad</td>
                     <td>
-                        <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => EditVlacku(vlacek.Id))">
+                        <button type="button" class="btn btn-outline-primary btn-sm" @onclick="() => EditVlacku(vlacek.Id)">
                             <span class="oi oi-pencil" aria-hidden="true"></span>
                         </button>
-                        <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => EditVlacku(vlacek.Id))">
+                        <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Delete(vlacek.Id))">
                             <span class="oi oi-trash" aria-hidden="true"></span>
                         </button>
                     </td>
+
                 </tr>
             }
         </tbody>
     </table>
+    <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Add())">
+        <span class="oi oi-plus" aria-hidden="true"></span>
+    </button>
 }
 
 @code {
@@ -51,10 +55,20 @@ else
         vlacky = await Http.GetFromJsonAsync<Vlacek[]>("/api/vlacek/list");
     }
 
+    private void Delete(int id)
+    {
+        //var result = await Http.PostAsJsonAsync<Vlacek>($"api/vlacek/remove", id);
+    }
+
     private void EditVlacku(int id)
     {
 
         NavManager.NavigateTo("/vlacek/edit/" + id);
+    }
+    protected void Add()
+    {
+        NavManager.NavigateTo("/vlacek/add");
+
     }
 
 }

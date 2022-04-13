@@ -1,6 +1,8 @@
 ﻿@page "/mezisklad/edit/{id:int}"
 @using Bosch.Shared
 @inject HttpClient Http
+@inject NavigationManager NavManager
+
 
 @if (mezisklad != null)
 {
@@ -28,4 +30,5 @@
     private async void HandleValidSubmit()
     {
         var result = await Http.PostAsJsonAsync<Mezisklad>($"api/mezisklad/save", mezisklad);
+        NavManager.NavigateTo("/mezisklad/list");
     } }

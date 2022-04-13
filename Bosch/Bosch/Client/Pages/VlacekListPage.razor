@@ -16,18 +16,31 @@ else
         <thead>
             <tr>
                 <th>Id</th>
+<<<<<<< HEAD
                 <th>kapacita</th>
                 <th>editace</th>
+=======
+                <th>Kapacita</th>
+                <th> Náklad </th>
+>>>>>>> dita
             </tr>
         </thead>
         <tbody>
             @foreach (var vlacek in vlacky)
             {
+<<<<<<< HEAD
                 <tr>
                     <td class=vlacek>@vlacek.Id</td>
                     <td>@vlacek.Kapacita</td>
                     <td><button @onclick="() => EditVlacku(vlacek.Id)">Edit</button></td>
                 </tr>
+=======
+            <tr>
+                <td class=vlacek>@vlacek.Id</td>
+                <td>@vlacek.Kapacita</td>
+                <td> @vlacek.Naklad</td>
+            </tr>
+>>>>>>> dita
             }
         </tbody>
     </table>

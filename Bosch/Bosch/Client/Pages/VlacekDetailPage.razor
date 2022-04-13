@@ -1,0 +1,30 @@
+﻿@page "/vlacek/edit/{id:int}"
+@using Bosch.Shared
+@inject HttpClient Http
+
+<h3>Správa vláčku</h3>
+
+@if (Vlacek != null)
+{
+<EditForm Model="@Vlacek" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <InputText id="Id" @bind-Value="Vlacek.Id.ToString()" />
+    <button type="submit">Submit</button>
+</EditForm>}
+
+@code { [Parameter]
+    public int Id { get; set; }
+
+    private Vlacek Vlacek { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Vlacek = await Http.GetFromJsonAsync<Vlacek>($"api/vlacek/edit/{Id}");
+    }
+
+    private async void HandleValidSubmit()
+    {
+        await AgentService.Save(Agent);
+        Navigation.NavigateTo("agent/list");
+    } }

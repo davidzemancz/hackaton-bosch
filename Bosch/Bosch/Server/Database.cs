@@ -13,7 +13,13 @@ namespace Bosch.Server
             new Vlacek() { Id = 2,  Kapacita = 100 },
         };
 
-        public static List<Material> Materialy { get; set; } = new List<Material>();
+        public static List<Material> Materialy { get; set; } = new List<Material>
+        {
+            new Material() {Id = 1, Nazev = "Uhli"},
+            new Material() {Id = 2, Nazev = "Srouby"},
+            new Material() {Id = 3, Nazev = "lidi"},
+        };
+
         public static List<Mezisklad> Mezisklady { get; set; } = new List<Mezisklad>()
         {
             new Mezisklad { Id = 0, Jmeno = "Praha", jizdniRad = null, seznamVlacku = { } },

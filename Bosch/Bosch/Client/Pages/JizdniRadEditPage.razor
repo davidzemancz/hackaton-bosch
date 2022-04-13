@@ -11,9 +11,13 @@
     <EditForm Model="@JizdniRad" OnValidSubmit="@HandleUloziJizdniRad">
         <DataAnnotationsValidator />
         <ValidationSummary />
-         <div class="form-group">
+            <div class="form-group">
                 <label for="nazev">Název:</label>
                 <InputText id="name" @bind-Value="JizdniRad.Nazev" />
+            </div>
+            <div class="form-group">
+                <label for="nazev">Platnost:</label>
+                <InputText id="name" @bind-Value="JizdniRad.Platnost" />
             </div>
         <button type="submit" class="btn btn-primary">Uložit jízdní řád</button>
     </EditForm>

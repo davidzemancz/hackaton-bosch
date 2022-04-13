@@ -16,7 +16,7 @@
 
     private async void HandleValidSubmit()
     {
-        var result = await Http.PostAsJsonAsync<Mezisklad>($"api/mezisklad/add", mezisklad);
+        var result = await Http.PostAsJsonAsync<Mezisklad>($"/api/mezisklad/add", mezisklad);
         NavManager.NavigateTo("/mezisklad/list");
     }
 }

@@ -40,6 +40,25 @@ namespace Bosch.Server
             new Material() {Id = 3, Nazev = "lidi"},
         };
 
+        public static void EditMaterial(Material material)
+        {
+            int index = Materialy.FindIndex(m => m.Id == material.Id);
+            Materialy[index] = material;
+        }
+
+        public static void RemoveMaterial(Material material)
+        {
+            Materialy.Remove(material);
+        }
+
+        public static void AddMaterial(Material material)
+        {
+            int maxIndex = Materialy[Materialy.Count - 1].Id;
+            material.Id = maxIndex + 1;
+
+            Materialy.Add(material);
+        }
+
         public static List<Mezisklad> Mezisklady { get; set; } = new List<Mezisklad>()
         {
             new Mezisklad { Id = 0, Jmeno = "Praha", jizdniRad = null, seznamVlacku = { } },
@@ -49,6 +68,25 @@ namespace Bosch.Server
             new Mezisklad { Id = 4, Jmeno = "Olomouc", jizdniRad = null, seznamVlacku = { } },
             new Mezisklad { Id = 5, Jmeno = "Pardubice", jizdniRad = null, seznamVlacku = { } },
         };
+
+        public static void EditMezisklad(Mezisklad mezisklad)
+        {
+            int index = Mezisklady.FindIndex(m => m.Id == mezisklad.Id);
+            Mezisklady[index] = mezisklad;
+        }
+
+        public static void RemoveMezisklad(Mezisklad mezisklad)
+        {
+            Mezisklady.Remove(mezisklad);
+        }
+
+        public static void AddMezisklad(Mezisklad mezisklad)
+        {
+            int maxIndex = Mezisklady[Mezisklady.Count - 1].Id;
+            mezisklad.Id = maxIndex + 1;
+
+            Mezisklady.Add(mezisklad);
+        }
 
         public static List<Zastavka> Zastavky { get; set; } = new List<Zastavka>()
         {
@@ -67,6 +105,7 @@ namespace Bosch.Server
 
         };
 
+
         public static List<Trasa> Trasy = new List<Trasa>
             {
                 new Trasa() { Id = 0, Zastavky = Zastavky },
@@ -75,6 +114,26 @@ namespace Bosch.Server
 
                 new Trasa() { Id = 2, Zastavky = Zastavky }
             };
+
+        public static void EditTrasa (Trasa trasa)
+        {
+            int index = Trasy.FindIndex(t => t.Id == trasa.Id);
+            Trasy[index] = trasa;
+        }
+
+        public static void RemoveTrasa(Trasa trasa)
+        {
+            Trasy.Remove(trasa);
+        }
+
+        public static void AddTrasa(Trasa trasa)
+        {
+            int maxIndex = Trasy[Trasy.Count - 1].Id;
+            trasa.Id = maxIndex + 1;
+
+            Trasy.Add(trasa);
+
+        }
 
         public static List<JizdniRad> JizdniRady { get; set; } = new List<JizdniRad>
         {
@@ -86,11 +145,43 @@ namespace Bosch.Server
             },
         };
 
+        public static void EditJizdniRad(JizdniRad jizdniRad)
+        {
+            int index = JizdniRady.FindIndex(j => j.Id == jizdniRad.Id);
+            JizdniRady[index] = jizdniRad;
+        }
+
+        public static void RemoveJizdniRad(JizdniRad jizdniRad)
+        {
+            JizdniRady.Remove(jizdniRad);
+        }
+
+        public static void AddJizdniRad(JizdniRad jizdniRad)
+        {
+            int maxIndex = JizdniRady[JizdniRady.Count - 1].Id;
+            jizdniRad.Id = maxIndex + 1;
+
+            JizdniRady.Add(jizdniRad);
+
+        }
+
         public static List<Objednavka> Objednavky { get; set; } = new List<Objednavka>()
         {
             new Objednavka() { Id = 1, Mezisklad = Mezisklady[0], Material = Materialy[0] }
         };
 
+        public static void RemoveObjednavka(Objednavka objednavka)
+        {
+            Objednavky.Remove(objednavka);
+        }
 
+        public static void AddObjednavka(Objednavka objednavka)
+        {
+            int maxIndex = Objednavky[Objednavky.Count - 1].Id;
+            objednavka.Id = maxIndex + 1;
+
+            Objednavky.Add(objednavka);
+
+        }
     }
 }

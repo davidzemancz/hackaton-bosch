@@ -25,20 +25,19 @@ namespace Bosch.Server.Controllers
             return Database.Mezisklady.Find(t => t.Id == id);
         }
 
-        [HttpGet]
+
+        [HttpPost]
         [Route("/api/mezisklad/add")]
-        public void Add(int id)
+        public void Add(Mezisklad mezisklad)
         {
-            //Database.Mezisklady.Add(); TODO
+            Database.AddMezisklad(mezisklad);
         }
 
         [HttpPost]
         [Route("/api/mezisklad/save")]
         public void Save(Mezisklad mezisklad)
         {
-            //Database.EditMezisklad(mezisklad);
-            //TODO implement  EditMezisklad
-
+            Database.EditMezisklad(mezisklad);
         }
 
     }

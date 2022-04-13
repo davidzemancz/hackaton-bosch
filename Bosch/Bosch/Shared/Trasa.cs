@@ -22,7 +22,7 @@ namespace Bosch.Shared
 
 		public string Nazev { get; set; }
 
-		public List<Zastavka> Zastavky { get; set; }
+		public List<Zastavka> Zastavky { get; set; } = new List<Zastavka>();
 
 		
 	}

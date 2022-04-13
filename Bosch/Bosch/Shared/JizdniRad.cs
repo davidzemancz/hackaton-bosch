@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bosch.Shared
 {
-    class JizdniRad
+    public class JizdniRad
     {
     }
 }

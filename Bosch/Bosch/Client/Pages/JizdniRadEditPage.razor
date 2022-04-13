@@ -1,0 +1,28 @@
+﻿@page "/jizdnirady/edit/{id:int}"
+@using Bosch.Shared
+@inject HttpClient Http
+@inject NavigationManager Navigation
+
+<h3>Editace</h3>
+
+@if (JizdniRad == null)
+{
+	<p><em>Loading...</em></p>
+}
+else
+{
+<p>@JizdniRad.Id</p>
+}
+
+@code 
+{
+	[Parameter]
+	public int Id { get; set; }
+
+	public JizdniRad JizdniRad;
+
+	protected override async Task OnInitializedAsync()
+	{
+		JizdniRad = await Http.GetFromJsonAsync<JizdniRad>("/api/jizdnirad/edit/" + Id);
+	}
+}

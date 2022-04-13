@@ -86,6 +86,11 @@ namespace Bosch.Server
             },
         };
 
+        public static List<Objednavka> Objednavky { get; set; } = new List<Objednavka>()
+        {
+            new Objednavka() { Id = 1, Mezisklad = Mezisklady[0], }
+        };
+
 
     }
 }

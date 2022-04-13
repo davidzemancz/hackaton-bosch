@@ -43,5 +43,11 @@ namespace Bosch.Server.Controllers
                 Database.Trasy[Database.Trasy.FindIndex(t => t.Id == trasa.Id)] = trasa;
             }
         }
+        [HttpPost]
+        [Route("/api/trasa/remove/{id:int}")]
+        public void Remove(int id)
+        {
+            Database.RemoveTrasa(id);
         }
+    }
 }

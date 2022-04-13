@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace Bosch.Server.Controllers
 {
     
-    [Route("/api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -41,10 +41,10 @@ namespace Bosch.Server.Controllers
         }
 
         [HttpPost]
-        [Route("/api/uzivatel/remove")]
+        [Route("/api/uzivatel/remove/{id:int}")]
         public void Remove(int id)
         {
-            // Database.RemoveVlacek(Database.Vlacky.Find(t => t.Id == id));
+            Database.RemoveUzivatel(id);
         }
 
     }

@@ -18,28 +18,26 @@ else
                 <th>Nazev</th>
                 <th>Jizdni Rady</th>
                 <th>Vlacky</th>
-                <th>Objednavky</th>
                 <th>Edit</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var mezisklad in mezisklady)
             {
-            <tr>
-                <td class=vlacek>@mezisklad.Id</td>
-                <td>@mezisklad.Jmeno</td>
-                <td>@mezisklad.jizdniRad</td>
-                <td>@mezisklad.seznamVlacku</td>
-                <td>@mezisklad.objednavky</td>
-                <td>
-                    <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Edit(mezisklad.Id))">
-                        <span class="oi oi-pencil" aria-hidden="true"></span>
-                    </button>
-                    <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Edit(mezisklad.Id))">
-                        <span class="oi oi-trash" aria-hidden="true"></span>
-                    </button>
-                </td>
-            </tr>
+                <tr>
+                    <td class=vlacek>@mezisklad.Id</td>
+                    <td>@mezisklad.Jmeno</td>
+                    <td>@mezisklad.jizdniRad</td>
+                    <td>@mezisklad.seznamVlacku</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Edit(mezisklad.Id))">
+                            <span class="oi oi-pencil" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Delete(mezisklad.Id))">
+                            <span class="oi oi-trash" aria-hidden="true"></span>
+                        </button>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
@@ -54,6 +52,12 @@ else
     protected override async Task OnInitializedAsync()
     {
         mezisklady = await Http.GetFromJsonAsync<Mezisklad[]>("/api/mezisklad/list");
+    }
+
+    private async void Delete(int id)
+    {
+        var result = await Http.PostAsJsonAsync<int>($"/api/mezisklad/remove/{id}", id);
+        NavManager.NavigateTo("/mezisklad/list");
     }
 
     private void Edit(int id)

@@ -21,8 +21,8 @@
             </div>
         <button type="submit" class="btn btn-primary">Uložit jízdní řád</button>
     </EditForm>
-
-     <h4>Trasy</h4>
+    <hr>
+     <h4>Jízdy</h4>
     <EditForm Model="@Jizda" OnValidSubmit="@HandlePridatJizdu">
         <DataAnnotationsValidator />
         <ValidationSummary />
@@ -39,7 +39,7 @@
                 <label for="cas">Čas odjezdu:</label>
                 <input @bind="Jizda.CasOdjezdu" type="time" id="cas" name="appt">
             </div>
-        <button type="submit" class="btn btn-primary">Přidat trasu do jízdního řádu</button>
+        <button type="submit" class="btn btn-primary">Přidat jízdu do jízdního řádu</button>
     </EditForm>
 
     <table class="table">

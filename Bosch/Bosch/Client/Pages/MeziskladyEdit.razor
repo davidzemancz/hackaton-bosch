@@ -7,13 +7,13 @@
 @if (mezisklad != null)
 {
 
-    <h3>Správa Meziskladů</h3>
-    <EditForm Model="@mezisklad" OnValidSubmit="@HandleValidSubmit">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
-        <InputText id="name" @bind-Value="mezisklad.Jmeno" />
-        <button type="submit">Submit</button>
-    </EditForm>
+    <h3>Správa Stanoviště</h3>
+	<EditForm Model="@mezisklad" OnValidSubmit="@HandleValidSubmit">
+		<DataAnnotationsValidator />
+		<ValidationSummary />
+		<InputText id="name" @bind-Value="mezisklad.Jmeno" />
+		<button type="submit" class="btn btn-outline-primary btn-sm">Uložit</button>
+	</EditForm>
 }
 
 

@@ -25,7 +25,7 @@ namespace Bosch.Shared
 
         public string Nazev { get; set; }
 
-        public string Platnost { get; set; }
+        public string Platnost { get; set; } = "";
 
         public List<Jizda> Jizdy { get; set; } = new List<Jizda>();
     }

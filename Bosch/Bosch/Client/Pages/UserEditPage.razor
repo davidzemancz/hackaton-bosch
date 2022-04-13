@@ -1,0 +1,45 @@
+﻿@page "/uzivatel/edit/{id:int}"
+@using Bosch.Shared
+@inject HttpClient Http
+@inject NavigationManager NavManager
+
+
+@if (uzivatel != null)
+{
+    <h3>Uživatel</h3>
+    <EditForm Model="@uzivatel" OnValidSubmit="@HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div class="form-group">
+        <InputText id="name" @bind-Value="uzivatel.Jmeno" />
+        </div>
+        <div class="form-group">
+        <InputSelect @bind-Value="uzivatel.Role">
+            @foreach (var role in Enum.GetValues(typeof(Roles)))
+            {
+                <option value="@role">@role</option>
+            }
+        </InputSelect>
+        </div>
+        <button class="btn btn-primary" type="submit">Uložit uživatele</button>
+    </EditForm>
+}
+
+
+@code { 
+    [Parameter]
+    public int Id { get; set; }
+
+    private Uzivatel uzivatel { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        uzivatel = await Http.GetFromJsonAsync<Uzivatel>($"/api/uzivatel/edit/{Id}");
+    }
+
+    private async void HandleValidSubmit()
+    {
+        var result = await Http.PostAsJsonAsync<Uzivatel>($"api/uzivatel/save", uzivatel);
+        NavManager.NavigateTo("/uzivatel/list");
+    } }
+

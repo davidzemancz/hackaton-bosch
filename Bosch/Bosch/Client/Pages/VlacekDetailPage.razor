@@ -2,6 +2,9 @@
 @using Bosch.Shared
 @inject HttpClient Http
 
+@if (vlacek != null)
+{
+
 <h3>Správa vláčku</h3>
 <EditForm Model="@vlacek" OnValidSubmit="@HandleValidSubmit">
     <DataAnnotationsValidator />
@@ -9,6 +12,7 @@
     <InputText id="name" @bind-Value="vlacek.Jmeno" />
     <button type="submit">Submit</button>
 </EditForm>
+}
 
 
 @code { [Parameter]
@@ -18,7 +22,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        vlacek = await Http.GetFromJsonAsync<Vlacek>($"api/vlacek/edit/{Id}");
+        vlacek = await Http.GetFromJsonAsync<Vlacek>($"/api/vlacek/edit/{Id}");
     }
 
     private async void HandleValidSubmit()

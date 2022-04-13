@@ -1,6 +1,7 @@
 ﻿using Bosch.Shared;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Bosch.Server.Controllers
@@ -17,17 +18,17 @@ namespace Bosch.Server.Controllers
             };
 
         [HttpGet]
-        [Route("/api/vlacek/edit/{id:int}")]
-        public Vlacek Find(int Id)
-        {
-            return Seznam[Id];
-        }
-
-        [HttpGet]
         [Route("/api/vlacek/list")]
         public Vlacek[] List()
         {
             return Database.Vlacky.ToArray();
+        }
+
+        [HttpGet]
+        [Route("/api/vlacek/edit/{id:int}")]
+        public Vlacek Edit(int id)
+        {
+            return Database.Vlacky.Find(t => t.Id == id);
         }
 
         [HttpPost]
@@ -37,5 +38,6 @@ namespace Bosch.Server.Controllers
             Database.EditVlacek(vlacek);
             
         }
+
     }
 }

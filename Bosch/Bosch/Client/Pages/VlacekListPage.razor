@@ -4,10 +4,12 @@
 
 <h1>Vlacky</h1>
 
+
 @if (vlacky == null)
 {
     <p><em>Loading...</em></p>
 }
+
 else
 {
     <table class="table">
@@ -15,15 +17,17 @@ else
             <tr>
                 <th>Id</th>
                 <th>kapacita</th>
+                <th>editace</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var vlacek in vlacky)
             {
-            <tr>
-                <td class=vlacek>@vlacek.Id</td>
-                <td>@vlacek.Kapacita</td>
-            </tr>
+                <tr>
+                    <td class=vlacek>@vlacek.Id</td>
+                    <td>@vlacek.Kapacita</td>
+                    <td><button @onclick="() => EditVlacku(vlacek.Id)">Edit</button></td>
+                </tr>
             }
         </tbody>
     </table>
@@ -35,6 +39,12 @@ else
     protected override async Task OnInitializedAsync()
     {
         vlacky = await Http.GetFromJsonAsync<Vlacek[]>("/api/vlacek/list");
+    }
+
+    private void EditVlacku(int id)
+    {
+
+        NavigationManager.NavigateTo($"/vlacek/list/edit");
     }
 
 }

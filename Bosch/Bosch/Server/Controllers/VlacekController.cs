@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Collections.Generic;
 
+
 namespace Bosch.Server.Controllers
 {
     [Route("api/[controller]")]
@@ -32,8 +33,15 @@ namespace Bosch.Server.Controllers
             Database.EditVlacek(vlacek);
         }
 
-        [HttpDelete]
-        [Route("/api/vlacek/remove/{id:int}")]
+        [HttpPost]
+        [Route("/api/vlacek/add")]
+        public void Add(Vlacek vlacek)
+        {
+            Database.AddVlacek(vlacek);
+        }
+
+        [HttpPost]
+        [Route("/api/vlacek/remove")]
         public void Remove(int id)
         {
             Database.RemoveVlacek(Database.Vlacky.Find(t => t.Id == id));

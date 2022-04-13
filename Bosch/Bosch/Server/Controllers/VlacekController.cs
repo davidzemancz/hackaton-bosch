@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Collections.Generic;
 
+
 namespace Bosch.Server.Controllers
 {
     [Route("api/[controller]")]
@@ -30,6 +31,13 @@ namespace Bosch.Server.Controllers
         public void Save(Vlacek vlacek)
         {
             Database.EditVlacek(vlacek);
+        }
+
+        [HttpPost]
+        [Route("/api/vlacek/add")]
+        public void Add(Vlacek vlacek)
+        {
+            Database.AddVlacek(vlacek);
         }
 
         [HttpPost]

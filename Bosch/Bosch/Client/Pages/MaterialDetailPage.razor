@@ -1,0 +1,29 @@
+﻿@page "/material/edit/{id:int}"
+@using Bosch.Shared
+@inject HttpClient Http
+
+<h3>Správa Materialu</h3>
+
+
+@if (material == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <p>@material.Id</p>
+}
+
+@code
+{
+    [Parameter]
+    public int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        material = await Http.GetFromJsonAsync<Material>("/api/material/edit/" + Id);
+    }
+
+    public Material material;
+}
+

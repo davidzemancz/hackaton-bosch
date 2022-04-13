@@ -8,12 +8,38 @@ namespace Bosch.Server
     {
         public static List<Vlacek> Vlacky { get; set; } = new List<Vlacek>
         {
-            new Vlacek() { Id = 0, Kapacita = 20 },
-            new Vlacek() { Id = 1,  Kapacita = 50 },
-            new Vlacek() { Id = 2,  Kapacita = 100 },
+            new Vlacek() { Id = 0, Jmeno = "A", Kapacita = 20 },
+            new Vlacek() { Id = 1, Jmeno = "B",  Kapacita = 50 },
+            new Vlacek() { Id = 2, Jmeno = "C", Kapacita = 100 },
         };
 
-        public static List<Material> Materialy { get; set; } = new List<Material>();
+        public static void EditVlacek(Vlacek vlacek)
+        {
+            int index = Vlacky.FindIndex(v => v.Id == vlacek.Id);
+            Vlacky[index] = vlacek;
+        }
+
+        public static void RemoveVlacek(Vlacek vlacek)
+        {
+            Vlacky.Remove(vlacek);
+        }
+
+        public static void AddVlacek(Vlacek vlacek)
+        {
+            int maxIndex = Vlacky[Vlacky.Count - 1].Id;
+            vlacek.Id = maxIndex + 1;
+
+            Vlacky.Add(vlacek);
+
+        }
+
+        public static List<Material> Materialy { get; set; } = new List<Material>
+        {
+            new Material() {Id = 1, Nazev = "Uhli"},
+            new Material() {Id = 2, Nazev = "Srouby"},
+            new Material() {Id = 3, Nazev = "lidi"},
+        };
+
         public static List<Mezisklad> Mezisklady { get; set; } = new List<Mezisklad>()
         {
             new Mezisklad { Id = 0, Jmeno = "Praha", jizdniRad = null, seznamVlacku = { } },

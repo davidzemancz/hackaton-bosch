@@ -11,20 +11,24 @@ namespace Bosch.Server.Controllers
     {
         [HttpGet]
         [Route("/api/material/edit/{id:int}")]
-        public Material Find(int Id)
+        public Material Find(int id)
         {
-            return Database.Materialy.ToArray()[0];
-            //TODO zmenit a volat podle use case formy
+            return Database.Materialy.Find(t => t.Id == id);
         }
 
         [HttpPost]
         [Route("/api/material/add")]
         public void Add(Material material)
         {
-            //Database.AddMaterial(material);
-            //TODO AddMaterial
+            Database.AddMaterial(material);
         }
 
+        [HttpPost]
+        [Route("/api/material/save")]
+        public void Save(Material material)
+        {
+            Database.EditMaterial(material);
+        }
 
         [HttpGet]
         [Route("/api/material/list")]

@@ -11,6 +11,7 @@ else
 {
 	<h3>Odjezdy vláčků</h3>
 
+
 	<table class="table">
 		<thead>
 			<tr>
@@ -23,11 +24,17 @@ else
 		<tbody>
 			@foreach (var Jizda in DnesniJizdy)
 			{
-			<tr>
-				<td>@Jizda.Id</td>
-				<td>@Jizda.Trasa.Jmeno</td>
-				<td>@Jizda.CasOdjezdu.ToString("HH:mm:ss")</td>
-			</tr>
+				<tr>
+					<td>@Jizda.Id</td>
+					<td>@Jizda.Trasa.Jmeno</td>
+					<td>@Jizda.CasOdjezdu.ToString("HH:mm:ss")</td>
+					<td>
+						@foreach (var n in Jizda.Naklad)
+						{
+							<p>@n.Nazev</p>
+						}
+					</td>
+				</tr>
 			}
 		</tbody>
 	</table>

@@ -1,0 +1,58 @@
+﻿@page "/trasy/add"
+@using Bosch.Shared
+@inject HttpClient Http
+@inject NavigationManager Navigation
+
+
+@if (Zastavky == null)
+{
+	<p><em>Loading...</em></p>
+}
+else
+{
+	<h3>Přidat trasu</h3>
+	<form>
+		<label for="fname">Jméno trasy: </label>
+		<input type="text" id="jmeno" name="jmeno">
+		<label for="zastavky"> Přidat zastávku: </label>
+		<select id="zastavky" name="zastavky">
+			@foreach (var Zastavka in Zastavky)
+				{
+				<option value="@Zastavka.Mezisklad.Jmeno">@Zastavka.Mezisklad.Jmeno</option>
+				}
+		</select>
+		<label for="cas"> Čas příjezdu: </label>
+		<input type="text" id="cas" name="cas">
+
+		<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Add())">
+			<span class="oi oi-plus" aria-hidden="true"></span>
+		</button>
+		<br>
+		<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Save())">
+			Uložit
+		</button>
+	</form>
+		
+
+
+@code {
+	public Trasa Trasa;
+
+	private List<Zastavka> Zastavky;
+
+	private Zastavka NovaZastavka;
+
+	protected override async Task OnInitializedAsync()
+	{
+		Zastavky = await Http.GetFromJsonAsync<List<Zastavka>>("/api/zastavka/list");
+	}
+
+	private void Add()
+	{
+	}
+
+	private void Save()
+	{
+		Zastavky.Add(NovaZastavka);
+	}
+}

@@ -3,7 +3,6 @@
 @inject HttpClient Http
 @inject NavigationManager Navigation
 
-<h3>Editace</h3>
 
 @if (Trasa == null)
 {
@@ -11,6 +10,7 @@
 }
 else
 {
+	<h3>Editace trasy @Trasa.Jmeno</h3>
 	<table class="table">
 		<thead>
 			<tr>
@@ -22,22 +22,22 @@ else
 		<tbody>
 			@foreach (var Zastavka in Trasa.Zastavky)
 			{
-			<tr>
-				<td>@Zastavka.Mezisklad.Id</td>
-				<td>@Zastavka.Mezisklad.Jmeno</td>
-				<td>
-					<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Delete(Zastavka.Mezisklad.Id))">
-						<span class="oi oi-trash" aria-hidden="true"></span>
-					</button>
-					<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Up(Zastavka.Mezisklad.Id))">
-						<span class="oi oi-arrow-top" aria-hidden="true"></span>
-					</button>
-					<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Down(Zastavka.Mezisklad.Id))">
-						<span class="oi oi-arrow-bottom" aria-hidden="true"></span>
-					</button>
+				<tr>
+					<td>@Zastavka.Mezisklad.Id</td>
+					<td>@Zastavka.Mezisklad.Jmeno</td>
+					<td>
+						<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Delete(Zastavka.Mezisklad.Id))">
+							<span class="oi oi-trash" aria-hidden="true"></span>
+						</button>
+						<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Up(Zastavka.Mezisklad.Id))">
+							<span class="oi oi-arrow-top" aria-hidden="true"></span>
+						</button>
+						<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Down(Zastavka.Mezisklad.Id))">
+							<span class="oi oi-arrow-bottom" aria-hidden="true"></span>
+						</button>
 
-				</td>
-			</tr>
+					</td>
+				</tr>
 			}
 		</tbody>
 	</table>

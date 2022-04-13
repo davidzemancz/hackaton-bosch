@@ -40,12 +40,14 @@ namespace Bosch.Server
         };
 
         public static List<Trasa> Trasy = new List<Trasa>
-            {
-                new Trasa() { Id = 0, Zastavky = Zastavky },
+        {
+            new Trasa() { Id = 0, Jmeno = "Krátká", Zastavky = Zastavky },
 
-                new Trasa() { Id = 1, Zastavky = Zastavky },
+            new Trasa() { Id = 1, Jmeno = "Dlouhá", Zastavky = Zastavky },
 
-                new Trasa() { Id = 2, Zastavky = Zastavky }
-            };
+            new Trasa() { Id = 2, Jmeno = "Víkendová", Zastavky = Zastavky }
+        };
+
+
     }
 }

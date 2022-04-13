@@ -15,6 +15,7 @@ else
 		<thead>
 			<tr>
 				<th>Id</th>
+				<th>Jméno</th>
 				<th>Zastávky</th>
 				<th>Editace</th>
 			</tr>
@@ -22,18 +23,19 @@ else
 		<tbody>
 			@foreach (var Trasa in Trasy)
 			{
-				<tr>
-					<td>@Trasa.Id</td>
-					<td>@Helpers.ListToString(Trasa.Zastavky)</td>
-					<td>
-						<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Edit(Trasa.Id))">
-							<span class="oi oi-pencil" aria-hidden="true"></span>
-						</button>
-						<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Delete(Trasa.Id))">
-							<span class="oi oi-trash" aria-hidden="true"></span>
-						</button>
-					</td>
-				</tr>
+			<tr>
+				<td>@Trasa.Id</td>
+				<td>@Trasa.Jmeno</td>
+				<td>@Helpers.ListToString(Trasa.Zastavky)</td>
+				<td>
+					<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Edit(Trasa.Id))">
+						<span class="oi oi-pencil" aria-hidden="true"></span>
+					</button>
+					<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Delete(Trasa.Id))">
+						<span class="oi oi-trash" aria-hidden="true"></span>
+					</button>
+				</td>
+			</tr>
 			}
 		</tbody>
 	</table>

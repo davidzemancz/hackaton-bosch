@@ -19,6 +19,8 @@ namespace Bosch.Shared
 	public class Trasa
 	{
 		public int Id { get; set; }
+
+		public string Jmeno { get; set; }
 		public List<Zastavka> Zastavky { get; set; }
 
 		

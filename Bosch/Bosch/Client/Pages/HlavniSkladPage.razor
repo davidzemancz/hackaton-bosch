@@ -1,0 +1,80 @@
+﻿@page "/hlavnisklad"
+@using Bosch.Shared
+@inject HttpClient Http
+
+
+@if (JizdniRady == null)
+{
+	<p><em>Loading...</em></p>
+}
+else
+{
+	<h3>Odjezdy vláčků</h3>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Trasa</th>
+				<th>Čas odjezdu</th>
+				<th>Náklad</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var Jizda in DnesniJizdy)
+			{
+			<tr>
+				<td>@Jizda.Id</td>
+				<td>@Jizda.Trasa.Jmeno</td>
+				<td>@Jizda.CasOdjezdu.ToString("HH:mm:ss")</td>
+			</tr>
+			}
+		</tbody>
+	</table>
+
+
+}
+
+@code {
+	private List<JizdniRad> JizdniRady;
+	private List<JizdniRad> DnesniJizdniRady = new List<JizdniRad>();
+	private List<Jizda> DnesniJizdy = new List<Jizda>();
+
+	protected override async Task OnInitializedAsync()
+	{
+		string dnes = DenVTydnu();
+		JizdniRady = await Http.GetFromJsonAsync<List<JizdniRad>>("/api/jizdnirad/list");
+
+		foreach (var JizdniRad in JizdniRady)
+		{
+			if (JizdniRad.Platnost.Contains(dnes))
+			{
+				DnesniJizdniRady.Add(JizdniRad);
+				foreach (var Jizda in JizdniRad.Jizdy)
+				{
+					if (Jizda.CasOdjezdu.TimeOfDay > DateTime.Now.TimeOfDay)
+						DnesniJizdy.Add(Jizda);
+				}
+			}
+		}
+		DnesniJizdy = DnesniJizdy.OrderBy(p => p.CasOdjezdu).ToList();
+	}
+
+
+	private string DenVTydnu()
+	{
+		DayOfWeek dnes = DateTime.Today.DayOfWeek;
+		switch (dnes)
+		{
+			case DayOfWeek.Monday: return "Po";
+			case DayOfWeek.Tuesday: return "Út";
+			case DayOfWeek.Wednesday: return "St";
+			case DayOfWeek.Thursday: return "Čt";
+			case DayOfWeek.Friday: return "Pá";
+			case DayOfWeek.Saturday: return "So";
+			case DayOfWeek.Sunday: return "Ne";
+			default: return "";
+		}
+	}
+
+}

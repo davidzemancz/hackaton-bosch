@@ -5,24 +5,94 @@
 
 <h3>Editace</h3>
 
-@if (JizdniRad == null)
+@if (JizdniRad != null && Trasy != null)
 {
-	<p><em>Loading...</em></p>
-}
-else
-{
-<p>@JizdniRad.Id</p>
+<h4>Jízdní řád</h4>
+    <EditForm Model="@JizdniRad" OnValidSubmit="@HandleUloziJizdniRad">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+            <div class="form-group">
+                <label for="nazev">Název:</label>
+                <InputText id="name" @bind-Value="JizdniRad.Nazev" />
+            </div>
+            <div class="form-group">
+                <label for="nazev">Platnost:</label>
+                <InputText id="name" @bind-Value="JizdniRad.Platnost" />
+            </div>
+        <button type="submit" class="btn btn-primary">Uložit jízdní řád</button>
+    </EditForm>
+
+     <h4>Trasy</h4>
+    <EditForm Model="@Jizda" OnValidSubmit="@HandlePridatJizdu">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+            <div class="form-group">
+                <label for="material">Trasa</label>
+                <select id="material" @bind="Jizda.Trasa.Id" class="form-control">
+                    @foreach (var trasa in Trasy)
+                    {
+                        <option value="@trasa.Id">@trasa.Jmeno</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cas">Čas odjezdu:</label>
+                <input @bind="Jizda.CasOdjezdu" type="time" id="cas" name="appt">
+            </div>
+        <button type="submit" class="btn btn-primary">Přidat trasu do jízdního řádu</button>
+    </EditForm>
+
+    <table class="table">
+		<thead>
+			<tr>
+				<th>Trasa</th>
+				<th>Čas odjezdu</th>
+			</tr>
+		</thead>
+		<tbody>
+        @foreach(var jizda in JizdniRad.Jizdy)
+        {
+                <tr>
+					<td>@jizda.Trasa.Jmeno</td>
+					<td>@jizda.CasOdjezdu.ToString("HH:mm:ss")</td>
+				</tr>
+        }
+    </tbody>
+	</table>
 }
 
 @code 
 {
-	[Parameter]
-	public int Id { get; set; }
+    [Parameter]
+    public int Id { get; set; }
 
-	public JizdniRad JizdniRad;
+    public JizdniRad JizdniRad;
 
-	protected override async Task OnInitializedAsync()
-	{
-		JizdniRad = await Http.GetFromJsonAsync<JizdniRad>("/api/jizdnirad/edit/" + Id);
-	}
+    private List<Trasa> Trasy;
+
+    public Jizda Jizda = new Jizda();
+
+    protected override async Task OnInitializedAsync()
+    {
+        JizdniRad = await Http.GetFromJsonAsync<JizdniRad>("/api/jizdnirad/edit/" + Id);
+        Trasy = await Http.GetFromJsonAsync<List<Trasa>>("/api/trasa/list");
+    }
+
+    private void HandlePridatJizdu()
+    {
+        JizdniRad.Jizdy.Add(new Jizda()
+        {
+            Trasa = Trasy.First(m => m.Id == Jizda.Trasa.Id),
+            CasOdjezdu = Jizda.CasOdjezdu
+        });
+    }
+
+    private async void HandleUloziJizdniRad()
+    {
+        JizdniRad.Id = Id;
+        await Http.PostAsJsonAsync<JizdniRad>("/api/jizdnirad/save", JizdniRad);
+        Navigation.NavigateTo("/jizdnirady");
+    }
+
+	
 }

@@ -19,9 +19,10 @@ namespace Bosch.Server
             Vlacky[index] = vlacek;
         }
 
-        public static void RemoveVlacek(Vlacek vlacek)
+        public static void RemoveVlacek(int id)
         {
-            Vlacky.Remove(vlacek);
+            int index = Database.Vlacky.FindIndex(t => t.Id == id);
+            Vlacky.RemoveAt(index);
         }
 
         public static void AddVlacek(Vlacek vlacek)
@@ -186,6 +187,32 @@ namespace Bosch.Server
 
             Objednavky.Add(objednavka);
 
+        }
+
+        public static List<Uzivatel> Uzivatele { get; set; } = new List<Uzivatel>
+        {
+            new Uzivatel(){Id = 1, Jmeno = "David", Prijmeni = "Zeman", Login = "dz", Role = Roles.David},
+            new Uzivatel(){Id = 2, Jmeno = "Petr", Prijmeni = "Smid", Login = "petr", Role = Roles.Admin}
+
+        };
+
+        public static void EditUzivatel(Uzivatel uzivatel)
+        {
+            int index = Uzivatele.FindIndex(u => u.Id == uzivatel.Id);
+            Uzivatele[index] = uzivatel;
+        }
+
+        public static void RemoveUzivatel(Uzivatel uzivatel)
+        {
+            Uzivatele.Remove(uzivatel);
+        }
+
+        public static void AddUzivatel(Uzivatel uzivatel)
+        {
+            int maxIndex = Uzivatele[Uzivatele.Count - 1].Id;
+            uzivatel.Id = maxIndex + 1;
+
+            Uzivatele.Add(uzivatel);
         }
     }
 }

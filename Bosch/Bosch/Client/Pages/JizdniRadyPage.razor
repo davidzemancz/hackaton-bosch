@@ -39,6 +39,9 @@ else
             }
         </tbody>
     </table>
+    <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Add())">
+        <span class="oi oi-plus" aria-hidden="true"></span>
+    </button>
 }
 
 @code {
@@ -61,8 +64,7 @@ else
 
 	protected void Add()
 	{
-		Navigation.NavigateTo("jizdnirad/add");
-
+		Navigation.NavigateTo("jizdnirady/edit/" + -1);
 	}
 
 }

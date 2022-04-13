@@ -1,0 +1,81 @@
+﻿@page "/uzivatel/list"
+@using Bosch.Shared
+@inject HttpClient Http
+@inject NavigationManager NavManager
+
+
+<h3>Uživatelé</h3>
+
+@if (uzivatele == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Jméno</th>
+                <th>Příjmení</th>
+                <th>Login</th>
+                <th>Role</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var uzivatel in uzivatele)
+            {
+                <tr>
+                    <td class=vlacek>@uzivatel.Id</td>
+                    <td> @uzivatel.Jmeno</td>
+                    <td>@uzivatel.Prijmeni</td>
+                    <td>@uzivatel.Login</td>
+                    <td>@uzivatel.Role</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-primary btn-sm" @onclick="() => Edit(uzivatel.Id)">
+                            <span class="oi oi-pencil" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Delete(uzivatel.Id))">
+                            <span class="oi oi-trash" aria-hidden="true"></span>
+                        </button>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Add())">
+        <span class="oi oi-plus" aria-hidden="true"></span>
+    </button>
+}
+
+
+
+@code {
+    private Uzivatel[] uzivatele;
+
+    protected override async Task OnInitializedAsync()
+    {
+        uzivatele = await Http.GetFromJsonAsync<Uzivatel[]>("/api/uzivatel/list");
+    }
+
+    private async void Delete(int id)
+    {
+        //var result = await Http.PostAsJsonAsync<Vlacek>($"api/vlacek/remove", id);
+    }
+
+    private void Edit(int id)
+    {
+
+        NavManager.NavigateTo("/uzivatel/edit/" + id);
+    }
+    protected void Add()
+    {
+        NavManager.NavigateTo("/uzivatel/add");
+
+    }
+
+
+
+}

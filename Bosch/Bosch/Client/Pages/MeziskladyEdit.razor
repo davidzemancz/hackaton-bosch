@@ -27,7 +27,5 @@
 
     private async void HandleValidSubmit()
     {
-        //await AgentService.Save(Agent);
-        //Navigation.NavigateTo("agent/list");
-        var result = await Http.PostAsJsonAsync<Mezisklad>($"api/vlacek/save", mezisklad);
+        var result = await Http.PostAsJsonAsync<Mezisklad>($"api/mezisklad/save", mezisklad);
     } }

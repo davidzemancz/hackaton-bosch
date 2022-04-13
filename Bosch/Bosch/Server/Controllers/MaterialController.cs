@@ -17,6 +17,14 @@ namespace Bosch.Server.Controllers
             //TODO zmenit a volat podle use case formy
         }
 
+        [HttpPost]
+        [Route("/api/material/add")]
+        public void Add(Material material)
+        {
+            //Database.AddMaterial(material);
+            //TODO AddMaterial
+        }
+
 
         [HttpGet]
         [Route("/api/material/list")]

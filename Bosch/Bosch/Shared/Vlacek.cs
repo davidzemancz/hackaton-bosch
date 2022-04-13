@@ -12,5 +12,7 @@ namespace Bosch.Shared
         public int Kapacita { get; set; }
         public List<Material> Naklad { get; set; }
         //TODO: zastavky, jizdni rad
+
+
     }
 }

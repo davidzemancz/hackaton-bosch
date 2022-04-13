@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Bosch.Shared
 {
-    public class Vlacek
+    class mezisklad
     {
         public int Id { get; set; }
-        public int Kapacita { get; set; }
-        public List<Material> Naklad { get; set; }
+        public List<Vlacek> seznamVlacku { get; set; }
+        public JizdniRad jizdniRad { get; set; } //prijezdy vlaku
     }
 }

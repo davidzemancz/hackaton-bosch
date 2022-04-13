@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Bosch.Shared
 {
-    public class Vlacek
+    public class Material
     {
-        public int Id { get; set; }
-        public int Kapacita { get; set; }
-        public List<Material> Naklad { get; set; }
+        public string Id { get; set; }
     }
 }
+

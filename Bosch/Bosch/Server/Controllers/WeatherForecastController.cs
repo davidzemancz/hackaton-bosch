@@ -43,12 +43,5 @@ namespace Bosch.Server.Controllers
         {
             return new Dita() { Jmeno = "Dita" };
         }
-
-        [HttpPost]
-        [Route("/api/dita/pozdrav")]
-        public void Pozdrav(Dita dita)
-        {
-
-        }
     }
 }

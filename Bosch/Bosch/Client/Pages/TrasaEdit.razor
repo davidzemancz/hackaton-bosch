@@ -1,0 +1,28 @@
+﻿@page "/trasy/edit/{id:int}"
+@using Bosch.Shared
+@inject HttpClient Http
+@inject NavigationManager Navigation
+
+<h3>Editace</h3>
+
+@if (Trasa == null)
+{
+	<p><em>Loading...</em></p>
+}
+else
+{
+<p>@Trasa.Id</p>
+}
+
+@code 
+{
+	[Parameter]
+	public int Id { get; set; }
+
+	protected override async Task OnInitializedAsync()
+	{
+		Trasa = await Http.GetFromJsonAsync<Trasa>("/api/trasa/edit/" + Id);
+	}
+
+	public Trasa Trasa;
+}

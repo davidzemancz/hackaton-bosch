@@ -10,6 +10,6 @@ namespace Bosch.Shared
     {
         public int Id { get; set; }
         public Mezisklad Mezisklad { get; set; }
-        public List<Material> Materialy { get; set; }
+        public Material Material { get; set; }
     }
 }

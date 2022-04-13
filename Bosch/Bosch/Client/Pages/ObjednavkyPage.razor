@@ -25,7 +25,7 @@ else
 				<tr>
 					<td>@objednavka.Id</td>
 					<td>@objednavka.Mezisklad.Jmeno</td>
-					<td>@Helpers.ListToString(objednavka.Materialy)</td>
+					<td>@objednavka.Material.Nazev</td>
 					<td>
 						<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Delete(objednavka.Id))">
 							<span class="oi oi-trash" aria-hidden="true"></span>

@@ -10,14 +10,14 @@ namespace Bosch.Server.Controllers
     public class MaterialController : ControllerBase
     {
         [HttpGet]
-        [Route("/api/vlacek/edit/{id:int}")]
+        [Route("/api/material/edit/{id:int}")]
         public void Find(int Id)
         {
             //TODO
         }
 
         [HttpGet]
-        [Route("/api/vlacek/list")]
+        [Route("/api/material/list")]
         public Vlacek[] List()
         {
             return Database.Vlacky.ToArray();

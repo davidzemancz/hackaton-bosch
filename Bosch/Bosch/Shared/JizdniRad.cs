@@ -19,6 +19,12 @@ namespace Bosch.Shared
 
     public class JizdniRad
     {
+        public int Id { get; set; }
+
+        public string Nazev { get; set; }
+
+        public string Platnost { get; set; }
+
         public List<Jizda> Jizdy { get; set; } = new List<Jizda>();
     }
 }

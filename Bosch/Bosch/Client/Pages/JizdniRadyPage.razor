@@ -1,5 +1,42 @@
-﻿<h3>JizdniRadyPage</h3>
+﻿@page "/jizdnirad/list"
+@using Bosch.Shared
+@inject HttpClient Http
+
+<h1>Jizdni rady</h1>
+
+@if (jizdnyRady == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Název</th>
+                <th>Platnost</th>   
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var jizdniRad in jizdnyRady)
+            {
+            <tr>
+                <td>@jizdniRad.Id</td>
+                <td>@jizdniRad.Nazev</td>
+                <td>@jizdniRad.Platnost</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
 
 @code {
+    private List<JizdniRad> jizdnyRady;
+
+    protected override async Task OnInitializedAsync()
+    {
+        jizdnyRady = await Http.GetFromJsonAsync<List<JizdniRad>>("/api/jizdnirad/list");
+    }
 
 }

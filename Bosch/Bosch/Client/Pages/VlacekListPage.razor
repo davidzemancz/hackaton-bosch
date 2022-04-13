@@ -1,6 +1,7 @@
 ﻿@page "/vlacek/list"
 @using Bosch.Shared
 @inject HttpClient Http
+@inject NavigationManager NavManager
 
 <h1>Vlacky</h1>
 
@@ -16,16 +17,18 @@ else
                 <th>Id</th>
                 <th>Kapacita</th>
                 <th>Naklad</th>
+                <th>Edit</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var vlacek in vlacky)
             {
-            <tr>
-                <td class=vlacek>@vlacek.Id</td>
-                <td>@vlacek.Kapacita</td>
-                <td>@vlacek.Naklad</td>
-            </tr>
+                <tr>
+                    <td class=vlacek>@vlacek.Id</td>
+                    <td>@vlacek.Kapacita</td>
+                    <td>@vlacek.Naklad</td>
+                    <td><button @onclick="() => EditVlacku(vlacek.Id)">Edit</button></td>
+                </tr>
             }
         </tbody>
     </table>
@@ -42,7 +45,7 @@ else
     private void EditVlacku(int id)
     {
 
-        //NavigationManager.NavigateTo($"/vlacek/list/edit");
+        NavManager.NavigateTo($"/vlacek/edit/{id}");
     }
 
 }

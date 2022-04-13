@@ -6,7 +6,24 @@ namespace Bosch.Server
 {
     public class Database
     {
-        public static List<Vlacek> Vlacky { get; set; } = new List<Vlacek>();
+        public static List<Vlacek> Vlacky { get; set; } = new List<Vlacek>
+        {
+            new Vlacek() { Id = 0, Kapacita = 20 },
+            new Vlacek() { Id = 1,  Kapacita = 50 },
+            new Vlacek() { Id = 2,  Kapacita = 100 },
+        };
+
+        public static List<Trasa> Trasy = new List<Trasa>
+            {
+                new Trasa() { Id = 0, Zastavky = new List<Zastavka> {
+                    new Zastavka() { Mezisklad = null, Cas = new DateTime(2008, 5, 1, 8, 30, 52) } } },
+
+                new Trasa() { Id = 1, Zastavky = new List<Zastavka> {
+                    new Zastavka() { Mezisklad = null, Cas = new DateTime(2020, 8, 1, 8, 30, 52) } } },
+
+                new Trasa() { Id = 2, Zastavky = new List<Zastavka> {
+                    new Zastavka() { Mezisklad = null, Cas = new DateTime(2022, 5, 10, 8, 30, 52) } } },
+            };
 
         public static List<Material> Materialy { get; set; } = new List<Material>();
 
@@ -21,17 +38,5 @@ namespace Bosch.Server
         };
 
         public static List<Mezisklad> Mezisklady { get; set; } = new List<Mezisklad>();
-
-        public static List<Trasa> Trasy = new List<Trasa>
-            {
-                new Trasa() { Id = 0, Zastavky = new List<Zastavka> {
-                    new Zastavka() { Mezisklad = null, Cas = new DateTime(2008, 5, 1, 8, 30, 52) } } },
-
-                new Trasa() { Id = 1, Zastavky = new List<Zastavka> {
-                    new Zastavka() { Mezisklad = null, Cas = new DateTime(2020, 8, 1, 8, 30, 52) } } },
-
-                new Trasa() { Id = 2, Zastavky = new List<Zastavka> {
-                    new Zastavka() { Mezisklad = null, Cas = new DateTime(2022, 5, 10, 8, 30, 52) } } },
-            };
     }
 }

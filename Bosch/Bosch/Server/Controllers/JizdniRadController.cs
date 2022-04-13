@@ -24,5 +24,6 @@ namespace Bosch.Server.Controllers
         {
             return Database.JizdniRady.First(t => t.Id == id);
         }
+
     }
 }

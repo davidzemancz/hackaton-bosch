@@ -80,8 +80,12 @@ namespace Bosch.Server
         {
             new JizdniRad() { Id = 1, Nazev = "Všední dny", Platnost = "Po, Út, St, Čt, Pá", Jizdy = new List<Jizda>
             {
-                new Jizda() { Id = 0, Trasa = Trasy[0], Vlacek = Vlacky[0]  },
-                new Jizda() { Id = 1, Trasa = Trasy[1], Vlacek = Vlacky[1]  }
+                new Jizda() { Id = 0, CasOdjezdu = new DateTime(2022, 5, 5, 18, 30, 52), Trasa = Trasy[0], Vlacek = Vlacky[0]  },
+                new Jizda() { Id = 1, CasOdjezdu = new DateTime(2022, 5, 5, 12, 30, 52), Trasa = Trasy[0], Vlacek = Vlacky[0]  },
+                new Jizda() { Id = 2, CasOdjezdu = new DateTime(2022, 5, 5, 16, 30, 52), Trasa = Trasy[0], Vlacek = Vlacky[0]  },
+                new Jizda() { Id = 3, CasOdjezdu = new DateTime(2022, 5, 5, 23, 59, 00), Trasa = Trasy[0], Vlacek = Vlacky[0]  },
+                new Jizda() { Id = 4, CasOdjezdu = new DateTime(2022, 5, 5, 2, 30, 52), Trasa = Trasy[0], Vlacek = Vlacky[0]  },
+                new Jizda() { Id = 5, CasOdjezdu = new DateTime(2022, 5, 5, 21, 20, 30),Trasa = Trasy[1], Vlacek = Vlacky[1]  }
             } 
             },
         };

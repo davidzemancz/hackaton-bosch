@@ -8,10 +8,30 @@ namespace Bosch.Server
     {
         public static List<Vlacek> Vlacky { get; set; } = new List<Vlacek>
         {
-            new Vlacek() { Id = 0, Kapacita = 20 },
-            new Vlacek() { Id = 1,  Kapacita = 50 },
-            new Vlacek() { Id = 2,  Kapacita = 100 },
+            new Vlacek() { Id = 0, Jmeno = "A", Kapacita = 20 },
+            new Vlacek() { Id = 1, Jmeno = "B",  Kapacita = 50 },
+            new Vlacek() { Id = 2, Jmeno = "C", Kapacita = 100 },
         };
+
+        public static void EditVlacek(Vlacek vlacek)
+        {
+            int index = Vlacky.FindIndex(v => v.Id == vlacek.Id);
+            Vlacky[index] = vlacek;
+        }
+
+        public static void RemoveVlacek(Vlacek vlacek)
+        {
+            Vlacky.Remove(vlacek);
+        }
+
+        public static void AddVlacek(Vlacek vlacek)
+        {
+            int maxIndex = Vlacky[Vlacky.Count - 1].Id;
+            vlacek.Id = maxIndex + 1;
+
+            Vlacky.Add(vlacek);
+
+        }
 
         public static List<Material> Materialy { get; set; } = new List<Material>
         {
@@ -64,6 +84,11 @@ namespace Bosch.Server
                 new Jizda() { Id = 1, Trasa = Trasy[1], Vlacek = Vlacky[1]  }
             } 
             },
+        };
+
+        public static List<Objednavka> Objednavky { get; set; } = new List<Objednavka>()
+        {
+            new Objednavka() { Id = 1, Mezisklad = Mezisklady[0], }
         };
 
 

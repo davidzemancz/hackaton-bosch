@@ -1,0 +1,63 @@
+﻿@page "/objednavky"
+@using Bosch.Shared
+@inject HttpClient Http
+@inject NavigationManager Navigation
+
+<h3>Objednávky</h3>
+
+@if (Objednavky == null)
+{
+	<p><em>Loading...</em></p>
+}
+else
+{
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Mezisklad</th>
+				<th>Materiál</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var objednavka in Objednavky)
+			{
+				<tr>
+					<td>@objednavka.Id</td>
+					<td>@objednavka.Mezisklad.Jmeno</td>
+					<td>@objednavka.Material.Nazev</td>
+					<td>
+						<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Delete(objednavka.Id))">
+							<span class="oi oi-trash" aria-hidden="true"></span>
+						</button>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+	<button type="button" class="btn btn-outline-primary btn-sm" @onclick="(() => Add())">
+		<span class="oi oi-plus" aria-hidden="true"></span>
+	</button>
+}
+
+@code {
+	private List<Objednavka> Objednavky;
+
+	protected override async Task OnInitializedAsync()
+	{
+		Objednavky = await Http.GetFromJsonAsync<List<Objednavka>>("/api/objednavka/list");
+	}
+
+
+	private void Delete(int id)
+	{
+
+	}
+
+	protected void Add()
+	{
+		Navigation.NavigateTo("objednavka/new");
+
+	}
+}
+

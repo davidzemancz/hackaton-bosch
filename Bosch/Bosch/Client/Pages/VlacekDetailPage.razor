@@ -4,4 +4,24 @@
 
 <h3>Správa vláčku</h3>
 
+@if (vlacek == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <p>@vlacek.Id</p>
+}
 
+@code
+{
+    [Parameter]
+    public int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        vlacek = await Http.GetFromJsonAsync<Vlacek>("/api/vlacek/edit/" + Id);
+    }
+
+    public Vlacek vlacek;
+}

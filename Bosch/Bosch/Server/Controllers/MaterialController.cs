@@ -10,6 +10,15 @@ namespace Bosch.Server.Controllers
     public class MaterialController : ControllerBase
     {
         [HttpGet]
+        [Route("/api/material/edit/{id:int}")]
+        public Material Find(int Id)
+        {
+            return Database.Materialy.ToArray()[0];
+            //TODO zmenit a volat podle use case formy
+        }
+
+
+        [HttpGet]
         [Route("/api/material/list")]
         public Material[] List()
         {

@@ -14,6 +14,5 @@ namespace Bosch.Shared
         public List<Material> Naklad { get; set; }
         //TODO: zastavky, jizdni rad
 
-
     }
 }

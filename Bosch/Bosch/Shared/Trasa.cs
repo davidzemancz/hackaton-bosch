@@ -21,8 +21,7 @@ namespace Bosch.Shared
 		public int Id { get; set; }
 
 		public string Jmeno { get; set; }
-		public List<Zastavka> Zastavky { get; set; }
-
+		public List<Zastavka> Zastavky { get; set; } = new List<Zastavka>();
 		
 	}
 }

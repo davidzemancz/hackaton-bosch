@@ -19,6 +19,4 @@
         var result = await Http.PostAsJsonAsync<Vlacek>($"api/vlacek/add", vlacek);
         NavManager.NavigateTo("/vlacek/list");
     }
-
-
 }
